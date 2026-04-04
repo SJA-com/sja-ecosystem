@@ -1,16 +1,16 @@
 const companies = [
-  { name: "SJA Path", domain: "path.sja.com" },
-  { name: "SJA Robotics", domain: "robotics.sja.com" },
-  { name: "SJA Care", domain: "care.sja.com" },
-  { name: "SJA Constructions", domain: "build.sja.com" },
-  { name: "SJA Education", domain: "edu.sja.com" },
-  { name: "SJA Wear", domain: "wear.sja.com" },
-  { name: "SJA Move", domain: "move.sja.com" },
-  { name: "SJA Fitness", domain: "fit.sja.com" },
-  { name: "SJA Finance", domain: "finance.sja.com" },
-  { name: "SJA Food", domain: "food.sja.com" },
-  { name: "SJA Travel", domain: "travel.sja.com" },
-  { name: "SJA Realty", domain: "realty.sja.com" },
+  { name: "SJA Path", link: "https://sjapathway.com" },
+  { name: "SJA Robotics", link: "https://sja-robotics.netlify.app/" },
+  { name: "SJA Care", link: "https://sja-care.netlify.app/" },
+  { name: "SJA Constructions", link: "https://sja-build.netlify.app/" },
+  { name: "SJA Education", link: "https://sja-edu.netlify.app/" },
+  { name: "SJA Wear", link: "https://sja-wear.netlify.app/" },
+  { name: "SJA Move", link: "https://sja-move.netlify.app/" },
+  { name: "SJA Fitness", link: "https://sja-fit.netlify.app/" },
+  { name: "SJA Finance", link: "https://sja-finance.netlify.app/" },
+  { name: "SJA Food", link: "https://sja-food.netlify.app/" },
+  { name: "SJA Travel", link: "https://sja-travel.netlify.app/" },
+  { name: "SJA Realty", link: "https://sja-realty.netlify.app/" },
 ];
 
 export default function Footer() {
@@ -20,9 +20,13 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-2 flex items-center justify-center font-bold text-white text-sm">
-                SJA
-              </div>
+              <img
+                src="/sja-logo-circle.png"
+                alt="SJA Logo"
+                width={36}
+                height={36}
+                className="rounded-full"
+              />
               <span className="text-lg font-bold">sja.com</span>
             </div>
             <p className="text-foreground/50 text-sm leading-relaxed mb-4">
@@ -54,8 +58,8 @@ export default function Footer() {
             <h4 className="text-sm font-semibold mb-4">Companies</h4>
             <ul className="space-y-2">
               {companies.slice(0, 6).map((c) => (
-                <li key={c.domain}>
-                  <span className="text-sm text-foreground/50">{c.name}</span>
+                <li key={c.name}>
+                  <a href={c.link} target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/50 hover:text-accent transition-colors">{c.name}</a>
                 </li>
               ))}
             </ul>
@@ -65,8 +69,8 @@ export default function Footer() {
             <h4 className="text-sm font-semibold mb-4">&nbsp;</h4>
             <ul className="space-y-2">
               {companies.slice(6).map((c) => (
-                <li key={c.domain}>
-                  <span className="text-sm text-foreground/50">{c.name}</span>
+                <li key={c.name}>
+                  <a href={c.link} target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/50 hover:text-accent transition-colors">{c.name}</a>
                 </li>
               ))}
             </ul>

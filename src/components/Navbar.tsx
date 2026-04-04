@@ -59,6 +59,8 @@ export default function Navbar() {
               width={48}
               height={48}
               className="rounded-full"
+              quality={100}
+              unoptimized
             />
           </Link>
 
