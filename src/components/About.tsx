@@ -27,12 +27,20 @@ export default function About() {
               innovation in its own domain while sharing a common purpose:
               empowering people through technology and excellence.
             </p>
-            <p className="text-foreground/70 leading-relaxed">
+            <p className="text-foreground/70 leading-relaxed mb-8">
               The main domain <span className="text-accent font-mono">sja.com</span>{" "}
               connects the entire network, with each subsidiary operating under
               its own subdomain, creating a unified yet diverse portfolio of
               companies.
             </p>
+            <a
+              href="https://sja-portfolio.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 rounded-lg bg-gradient-to-r from-accent to-accent-2 text-white font-semibold hover:opacity-90 transition-opacity"
+            >
+              Know More
+            </a>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
