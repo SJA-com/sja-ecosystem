@@ -6,14 +6,14 @@ const subsidiaries = [
   {
     name: "SJA Path",
     domain: "path.sja.com",
-    link: "https://sjapathway.com",
+    link: "https://main.sjapathway.com/",
     description:
       "Career guidance, mentorship, and personal development platform. Helping individuals discover their path and achieve their full potential through AI-powered coaching.",
     icon: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7",
-    color: "text-teal-400",
-    border: "border-teal-400/30",
-    bg: "bg-teal-400/10",
-    shadow: "shadow-teal-400/20",
+    color: "text-[#d4a017]",
+    border: "border-[#d4a017]/30",
+    bg: "bg-[#d4a017]/10",
+    shadow: "shadow-[#d4a017]/20",
   },
   {
     name: "SJA Robotics",
