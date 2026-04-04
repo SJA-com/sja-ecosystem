@@ -3,12 +3,12 @@
 :root {
   --background: #06060a;
   --foreground: #ededed;
-  --accent: #6366f1;
-  --accent-2: #8b5cf6;
-  --accent-3: #a78bfa;
-  --surface: #0c0c14;
-  --surface-2: #14142a;
-  --border: #1e1e3a;
+  --accent: #d4a017;
+  --accent-2: #f0c040;
+  --accent-3: #ffd966;
+  --surface: #0c0c0a;
+  --surface-2: #1a1a14;
+  --border: #2a2a1e;
 }
 
 @theme inline {
@@ -36,8 +36,8 @@ html {
 
 .grid-bg {
   background-image:
-    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(212, 160, 23, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 160, 23, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 

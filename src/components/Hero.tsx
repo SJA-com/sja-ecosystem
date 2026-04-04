@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center grid-bg overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center grid-bg overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/3 w-[500px] h-[500px] bg-accent-2/5 rounded-full blur-3xl" />
