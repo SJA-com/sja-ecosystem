@@ -30,7 +30,7 @@ const subsidiaries = [
   {
     name: "SJA Care",
     domain: "care.sja.com",
-    link: "",
+    link: "https://sja-care.netlify.app/",
     description:
       "Revolutionizing healthcare with AI-assisted diagnostics, robotic surgery, and patient care systems that integrate with the Atiana-H platform.",
     icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
@@ -54,7 +54,7 @@ const subsidiaries = [
   {
     name: "SJA Education",
     domain: "edu.sja.com",
-    link: "",
+    link: "https://sja-edu.netlify.app/",
     description:
       "Transforming learning through AI-powered tutoring, personalized education paths, and smart classroom technologies for students of all ages.",
     icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
@@ -78,7 +78,7 @@ const subsidiaries = [
   {
     name: "SJA Move",
     domain: "move.sja.com",
-    link: "",
+    link: "https://sja-move.netlify.app/",
     description:
       "Next-generation transportation solutions including autonomous vehicles, smart logistics, and AI-optimized mobility platforms.",
     icon: "M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0",
@@ -90,7 +90,7 @@ const subsidiaries = [
   {
     name: "SJA Fitness",
     domain: "fit.sja.com",
-    link: "",
+    link: "https://sja-fit.netlify.app/",
     description:
       "AI-powered fitness tracking, personalized workout plans, smart gym equipment, and health optimization through data-driven insights.",
     icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064",
@@ -102,7 +102,7 @@ const subsidiaries = [
   {
     name: "SJA Finance",
     domain: "finance.sja.com",
-    link: "",
+    link: "https://sja-finance.netlify.app/",
     description:
       "Intelligent financial services including AI-driven investment analysis, digital banking solutions, and smart financial planning tools.",
     icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
@@ -114,7 +114,7 @@ const subsidiaries = [
   {
     name: "SJA Food",
     domain: "food.sja.com",
-    link: "",
+    link: "https://sja-food.netlify.app/",
     description:
       "Smart agriculture, AI-driven food supply chains, and innovative food technology solutions transforming how we grow, distribute, and consume food.",
     icon: "M12 3c-1.5 0-3 1-3 3 0 1.5 1 2.5 2 3v2H9c-1.5 0-3 1-3 3h12c0-2-1.5-3-3-3h-2V9c1-0.5 2-1.5 2-3 0-2-1.5-3-3-3zM6 16h12v2a2 2 0 01-2 2H8a2 2 0 01-2-2v-2z",
@@ -126,7 +126,7 @@ const subsidiaries = [
   {
     name: "SJA Travel",
     domain: "travel.sja.com",
-    link: "",
+    link: "https://sja-travel.netlify.app/",
     description:
       "Complete travel and hospitality solutions including SJA Airlines, SJA Hotels, and SJA Transport — redefining how people experience the world.",
     icon: "M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z",
@@ -138,7 +138,7 @@ const subsidiaries = [
   {
     name: "SJA Realty",
     domain: "realty.sja.com",
-    link: "",
+    link: "https://sja-realty.netlify.app/",
     description:
       "Smart homes, AI-powered property management, and real estate technology transforming how people buy, sell, and live in modern spaces.",
     icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1m-4 0h4",
