@@ -153,9 +153,9 @@ export default function Subsidiaries() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="subsidiaries" className="py-24 relative grid-bg">
+    <section id="subsidiaries" className="py-2 sm:py-12 relative grid-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-2 sm:mb-8">
           <p className="text-accent text-sm font-mono mb-3 tracking-wider uppercase">
             Our Companies
           </p>
@@ -337,8 +337,8 @@ export default function Subsidiaries() {
 
           {/* Mobile info panel below orbit */}
           <div
-            className={`mt-6 text-center transition-all duration-300 min-h-[100px] ${
-              active !== null ? "opacity-100" : "opacity-0"
+            className={`mt-4 text-center transition-all duration-300 ${
+              active !== null ? "opacity-100" : "opacity-0 h-0 overflow-hidden"
             }`}
           >
             {active !== null && (
