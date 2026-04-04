@@ -3,9 +3,9 @@
 :root {
   --background: #06060a;
   --foreground: #ededed;
-  --accent: #d4a017;
-  --accent-2: #f0c040;
-  --accent-3: #ffd966;
+  --accent: #b28309;
+  --accent-2: #d4a020;
+  --accent-3: #e8bb3a;
   --surface: #0c0c0a;
   --surface-2: #1a1a14;
   --border: #2a2a1e;
@@ -36,8 +36,8 @@ html {
 
 .grid-bg {
   background-image:
-    linear-gradient(rgba(212, 160, 23, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 160, 23, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(178, 131, 9, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(178, 131, 9, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 

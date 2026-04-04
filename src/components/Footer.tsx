@@ -1,14 +1,16 @@
 const companies = [
-  { name: "SJA Robotics", domain: "ai.sja.com" },
-  { name: "SJA Hospitals", domain: "care.sja.com" },
+  { name: "SJA Path", domain: "path.sja.com" },
+  { name: "SJA Robotics", domain: "robotics.sja.com" },
+  { name: "SJA Care", domain: "care.sja.com" },
   { name: "SJA Constructions", domain: "build.sja.com" },
   { name: "SJA Education", domain: "edu.sja.com" },
   { name: "SJA Wear", domain: "wear.sja.com" },
   { name: "SJA Move", domain: "move.sja.com" },
   { name: "SJA Fitness", domain: "fit.sja.com" },
   { name: "SJA Finance", domain: "finance.sja.com" },
-  { name: "SJA Tech", domain: "tech.sja.com" },
-  { name: "SJA Path", domain: "path.sja.com" },
+  { name: "SJA Food", domain: "food.sja.com" },
+  { name: "SJA Travel", domain: "travel.sja.com" },
+  { name: "SJA Realty", domain: "realty.sja.com" },
 ];
 
 export default function Footer() {
@@ -51,7 +53,7 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold mb-4">Companies</h4>
             <ul className="space-y-2">
-              {companies.slice(0, 5).map((c) => (
+              {companies.slice(0, 6).map((c) => (
                 <li key={c.domain}>
                   <span className="text-sm text-foreground/50">{c.name}</span>
                 </li>
@@ -62,7 +64,7 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold mb-4">&nbsp;</h4>
             <ul className="space-y-2">
-              {companies.slice(5).map((c) => (
+              {companies.slice(6).map((c) => (
                 <li key={c.domain}>
                   <span className="text-sm text-foreground/50">{c.name}</span>
                 </li>

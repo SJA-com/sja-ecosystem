@@ -26,6 +26,18 @@ const subsidiaries = [
     border: "border-blue-400/30",
     bg: "bg-blue-400/10",
     shadow: "shadow-blue-400/20",
+    subDivisions: [
+      {
+        name: "SJA Tech",
+        description: "Consumer electronics — laptops, smartphones, tablets, and smart devices.",
+        icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+      },
+      {
+        name: "SJA AI",
+        description: "Artificial intelligence research, machine learning models, and intelligent software solutions.",
+        icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+      },
+    ],
   },
   {
     name: "SJA Care",
@@ -190,8 +202,8 @@ export default function Subsidiaries() {
               const angle = (i * 360) / subsidiaries.length - 90;
               const rad = (angle * Math.PI) / 180;
               const radius = 230;
-              const x = Math.cos(rad) * radius;
-              const y = Math.sin(rad) * radius;
+              const x = Math.round(Math.cos(rad) * radius * 100) / 100;
+              const y = Math.round(Math.sin(rad) * radius * 100) / 100;
 
               // Position tooltip outward from center
               const tooltipPos: React.CSSProperties = {};
@@ -260,7 +272,7 @@ export default function Subsidiaries() {
                     {/* Tooltip - always positioned outward from orbit */}
                     {active === i && (
                       <div
-                        className={`absolute w-56 rounded-xl bg-surface border ${sub.border} p-4 shadow-xl ${sub.shadow} z-30`}
+                        className={`absolute ${sub.subDivisions ? "w-72" : "w-56"} rounded-xl bg-surface border ${sub.border} p-4 shadow-xl ${sub.shadow} z-30`}
                         style={tooltipPos}
                       >
                         <h4 className={`text-sm font-bold ${sub.color}`}>{sub.name}</h4>
@@ -270,6 +282,27 @@ export default function Subsidiaries() {
                         <p className="text-foreground/60 text-xs mt-2 leading-relaxed">
                           {sub.description}
                         </p>
+                        {sub.subDivisions && (
+                          <div className="mt-3 space-y-2 border-t border-border/30 pt-3">
+                            <p className="text-[10px] font-mono text-foreground/40 uppercase tracking-wider">Divisions</p>
+                            {sub.subDivisions.map((div) => (
+                              <div key={div.name} className={`flex items-start gap-2 rounded-lg ${sub.bg} p-2`}>
+                                <svg
+                                  className={`w-4 h-4 ${sub.color} shrink-0 mt-0.5`}
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={div.icon} />
+                                </svg>
+                                <div>
+                                  <p className={`text-xs font-bold ${sub.color}`}>{div.name}</p>
+                                  <p className="text-foreground/50 text-[10px] leading-relaxed">{div.description}</p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                         {sub.link && (
                           <span className={`inline-block mt-2 text-[10px] font-mono ${sub.color}`}>
                             Visit →
@@ -303,8 +336,8 @@ export default function Subsidiaries() {
               const angle = (i * 360) / subsidiaries.length - 90;
               const rad = (angle * Math.PI) / 180;
               const radius = 140;
-              const x = Math.cos(rad) * radius;
-              const y = Math.sin(rad) * radius;
+              const x = Math.round(Math.cos(rad) * radius * 100) / 100;
+              const y = Math.round(Math.sin(rad) * radius * 100) / 100;
 
               return (
                 <div
@@ -352,6 +385,27 @@ export default function Subsidiaries() {
                 <p className="text-foreground/60 text-sm mt-2 leading-relaxed">
                   {subsidiaries[active].description}
                 </p>
+                {subsidiaries[active].subDivisions && (
+                  <div className="mt-3 space-y-2 border-t border-border/30 pt-3">
+                    <p className="text-[10px] font-mono text-foreground/40 uppercase tracking-wider">Divisions</p>
+                    {subsidiaries[active].subDivisions.map((div) => (
+                      <div key={div.name} className={`flex items-start gap-2 rounded-lg ${subsidiaries[active].bg} p-2 text-left`}>
+                        <svg
+                          className={`w-4 h-4 ${subsidiaries[active].color} shrink-0 mt-0.5`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={div.icon} />
+                        </svg>
+                        <div>
+                          <p className={`text-xs font-bold ${subsidiaries[active].color}`}>{div.name}</p>
+                          <p className="text-foreground/50 text-[10px] leading-relaxed">{div.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 {subsidiaries[active].link && (
                   <a
                     href={subsidiaries[active].link}
