@@ -57,7 +57,7 @@ export default function Hero() {
           return (
             <div
               key={i}
-              className={`absolute hidden sm:block ${isEven ? "animate-float" : "animate-float-reverse"}`}
+              className={`absolute ${isEven ? "animate-float" : "animate-float-reverse"}`}
               style={{
                 top: pos.top,
                 left: pos.left,
@@ -67,7 +67,7 @@ export default function Hero() {
               } as React.CSSProperties}
             >
               <svg
-                className="w-10 h-10 text-accent/[0.05]"
+                className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-accent/25"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -75,7 +75,7 @@ export default function Hero() {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={1}
+                  strokeWidth={1.5}
                   d={icon}
                 />
               </svg>
@@ -84,14 +84,14 @@ export default function Hero() {
         })}
 
         {/* Geometric shapes */}
-        <div className="absolute top-[10%] left-[20%] w-20 h-20 border border-accent/[0.06] rotate-45 animate-float" style={{ "--rotate": "45deg", "--duration": "12s" } as React.CSSProperties} />
-        <div className="absolute top-[60%] right-[15%] w-16 h-16 border border-accent-2/[0.06] rounded-full animate-float-reverse" style={{ "--rotate": "0deg", "--duration": "10s" } as React.CSSProperties} />
-        <div className="absolute top-[30%] right-[8%] w-24 h-24 border border-accent-3/[0.05] rotate-12 animate-float" style={{ "--rotate": "12deg", "--duration": "14s" } as React.CSSProperties} />
-        <div className="absolute bottom-[20%] left-[15%] w-12 h-12 border border-accent/[0.07] rounded-full animate-float-reverse" style={{ "--rotate": "0deg", "--duration": "9s" } as React.CSSProperties} />
-        <div className="absolute top-[45%] left-[25%] w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-b-[26px] border-b-accent/[0.05] animate-float" style={{ "--rotate": "0deg", "--duration": "11s" } as React.CSSProperties} />
-        <div className="absolute top-[75%] right-[25%] w-14 h-14 border border-accent-2/[0.05] rotate-[30deg] animate-float-reverse" style={{ "--rotate": "30deg", "--duration": "13s" } as React.CSSProperties} />
-        <div className="absolute top-[15%] left-[50%] w-8 h-8 border border-accent-3/[0.06] rounded-full animate-float" style={{ "--rotate": "0deg", "--duration": "8s" } as React.CSSProperties} />
-        <div className="absolute bottom-[10%] left-[45%] w-18 h-18 border border-accent/[0.04] rotate-[60deg] animate-float-reverse" style={{ "--rotate": "60deg", "--duration": "15s" } as React.CSSProperties} />
+        <div className="absolute top-[10%] left-[20%] w-20 h-20 border border-accent/20 rotate-45 animate-float" style={{ "--rotate": "45deg", "--duration": "12s" } as React.CSSProperties} />
+        <div className="absolute top-[60%] right-[15%] w-16 h-16 border border-accent-2/20 rounded-full animate-float-reverse" style={{ "--rotate": "0deg", "--duration": "10s" } as React.CSSProperties} />
+        <div className="absolute top-[30%] right-[8%] w-24 h-24 border border-accent-3/15 rotate-12 animate-float" style={{ "--rotate": "12deg", "--duration": "14s" } as React.CSSProperties} />
+        <div className="absolute bottom-[20%] left-[15%] w-12 h-12 border border-accent/25 rounded-full animate-float-reverse" style={{ "--rotate": "0deg", "--duration": "9s" } as React.CSSProperties} />
+        <div className="absolute top-[45%] left-[25%] w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-b-[26px] border-b-accent/20 animate-float" style={{ "--rotate": "0deg", "--duration": "11s" } as React.CSSProperties} />
+        <div className="absolute top-[75%] right-[25%] w-14 h-14 border border-accent-2/20 rotate-[30deg] animate-float-reverse" style={{ "--rotate": "30deg", "--duration": "13s" } as React.CSSProperties} />
+        <div className="absolute top-[15%] left-[50%] w-8 h-8 border border-accent-3/20 rounded-full animate-float" style={{ "--rotate": "0deg", "--duration": "8s" } as React.CSSProperties} />
+        <div className="absolute bottom-[10%] left-[45%] w-18 h-18 border border-accent/15 rotate-[60deg] animate-float-reverse" style={{ "--rotate": "60deg", "--duration": "15s" } as React.CSSProperties} />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">

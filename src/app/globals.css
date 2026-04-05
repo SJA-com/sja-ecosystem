@@ -36,8 +36,8 @@ html {
 
 .grid-bg {
   background-image:
-    linear-gradient(rgba(178, 131, 9, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(178, 131, 9, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(178, 131, 9, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(178, 131, 9, 0.15) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
