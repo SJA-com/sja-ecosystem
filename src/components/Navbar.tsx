@@ -24,6 +24,13 @@ const sectionTextColors: Record<string, string> = {
   vision: "text-emerald-400",
 };
 
+const sectionHoverColors: Record<string, string> = {
+  hero: "hover:text-[#b28309]",
+  about: "hover:text-blue-400",
+  subsidiaries: "hover:text-[#b28309]",
+  vision: "hover:text-emerald-400",
+};
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
@@ -47,6 +54,7 @@ export default function Navbar() {
 
   const borderColor = sectionColors[activeSection] || "border-border";
   const accentText = sectionTextColors[activeSection] || "text-accent";
+  const hoverText = sectionHoverColors[activeSection] || "hover:text-[#b28309]";
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b ${borderColor} transition-colors duration-500`}>
@@ -73,7 +81,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={`text-sm transition-colors duration-300 ${
-                    isActive ? `${accentText} font-medium` : "text-foreground/70 hover:text-foreground"
+                    isActive ? `${accentText} font-medium` : `text-foreground/70 ${hoverText}`
                   }`}
                 >
                   {link.label}
@@ -84,7 +92,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-foreground/70 hover:text-accent"
+            className={`md:hidden p-2 text-foreground/70 ${hoverText}`}
             aria-label="Toggle menu"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -106,7 +114,7 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={`block text-sm transition-colors duration-300 ${
-                    isActive ? `${accentText} font-medium` : "text-foreground/70 hover:text-foreground"
+                    isActive ? `${accentText} font-medium` : `text-foreground/70 ${hoverText}`
                   }`}
                 >
                   {link.label}
