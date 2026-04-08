@@ -84,3 +84,12 @@ html {
 .animate-float-reverse {
   animation: float-reverse var(--duration, 8s) ease-in-out infinite;
 }
+
+@keyframes blink-green {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-blink-green {
+  animation: blink-green 1.5s ease-in-out infinite;
+}

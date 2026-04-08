@@ -6,7 +6,7 @@ const subsidiaries = [
   {
     name: "SJA Path",
     domain: "path.sja.com",
-    link: "https://main.sjapathway.com/",
+    link: "https://sjapathway.com/",
     description:
       "Career guidance, mentorship, and personal development platform. Helping individuals discover their path and achieve their full potential through AI-powered coaching.",
     icon: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7",
@@ -14,6 +14,7 @@ const subsidiaries = [
     border: "border-[#d4a017]/30",
     bg: "bg-[#d4a017]/10",
     shadow: "shadow-[#d4a017]/20",
+    isActive: true,
   },
   {
     name: "SJA Robotics",
@@ -26,6 +27,7 @@ const subsidiaries = [
     border: "border-blue-400/30",
     bg: "bg-blue-400/10",
     shadow: "shadow-blue-400/20",
+    isActive: false,
   },
   {
     name: "SJA Care",
@@ -38,6 +40,7 @@ const subsidiaries = [
     border: "border-red-400/30",
     bg: "bg-red-400/10",
     shadow: "shadow-red-400/20",
+    isActive: false,
   },
   {
     name: "SJA Constructions",
@@ -50,6 +53,7 @@ const subsidiaries = [
     border: "border-amber-400/30",
     bg: "bg-amber-400/10",
     shadow: "shadow-amber-400/20",
+    isActive: false,
   },
   {
     name: "SJA Education",
@@ -62,6 +66,7 @@ const subsidiaries = [
     border: "border-cyan-400/30",
     bg: "bg-cyan-400/10",
     shadow: "shadow-cyan-400/20",
+    isActive: false,
   },
   {
     name: "SJA Wear",
@@ -74,6 +79,7 @@ const subsidiaries = [
     border: "border-pink-400/30",
     bg: "bg-pink-400/10",
     shadow: "shadow-pink-400/20",
+    isActive: false,
   },
   {
     name: "SJA Move",
@@ -86,6 +92,7 @@ const subsidiaries = [
     border: "border-green-400/30",
     bg: "bg-green-400/10",
     shadow: "shadow-green-400/20",
+    isActive: false,
   },
   {
     name: "SJA Fitness",
@@ -98,6 +105,7 @@ const subsidiaries = [
     border: "border-emerald-400/30",
     bg: "bg-emerald-400/10",
     shadow: "shadow-emerald-400/20",
+    isActive: false,
   },
   {
     name: "SJA Finance",
@@ -110,6 +118,7 @@ const subsidiaries = [
     border: "border-yellow-400/30",
     bg: "bg-yellow-400/10",
     shadow: "shadow-yellow-400/20",
+    isActive: false,
   },
   {
     name: "SJA Food",
@@ -122,6 +131,7 @@ const subsidiaries = [
     border: "border-lime-400/30",
     bg: "bg-lime-400/10",
     shadow: "shadow-lime-400/20",
+    isActive: false,
   },
   {
     name: "SJA Travel",
@@ -134,6 +144,7 @@ const subsidiaries = [
     border: "border-sky-400/30",
     bg: "bg-sky-400/10",
     shadow: "shadow-sky-400/20",
+    isActive: false,
   },
   {
     name: "SJA Realty",
@@ -146,6 +157,7 @@ const subsidiaries = [
     border: "border-violet-400/30",
     bg: "bg-violet-400/10",
     shadow: "shadow-violet-400/20",
+    isActive: false,
   },
 ];
 
@@ -166,6 +178,11 @@ export default function Subsidiaries() {
           <p className="text-foreground/60 max-w-2xl mx-auto">
             A unified yet diverse portfolio of companies that span multiple
             industries.
+          </p>
+          <p className="text-foreground/40 text-xs mt-3 font-mono">
+            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-500 animate-blink-green inline-block" /> SJA Pathway is live</span>
+            <span className="mx-2 text-foreground/20">|</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-accent inline-block" /> Others launching soon</span>
           </p>
         </div>
 
@@ -256,6 +273,20 @@ export default function Subsidiaries() {
                         {sub.name.replace("SJA ", "")}
                       </span>
                     </div>
+                    {/* Status dot */}
+                    <span
+                      className={`absolute top-0.5 right-0.5 w-3 h-3 rounded-full border-2 border-[#06060a] ${
+                        sub.isActive
+                          ? "bg-green-500 animate-blink-green"
+                          : "bg-accent"
+                      }`}
+                    />
+                    {/* Coming Soon badge for non-active */}
+                    {!sub.isActive && (
+                      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[7px] font-mono text-accent bg-[#06060a] border border-accent/30 rounded-full px-1.5 py-0.5 whitespace-nowrap">
+                        Soon
+                      </span>
+                    )}
 
                     {/* Tooltip - always positioned outward from orbit */}
                     {active === i && (
@@ -263,7 +294,14 @@ export default function Subsidiaries() {
                         className={`absolute w-56 rounded-xl bg-surface border ${sub.border} p-4 shadow-xl ${sub.shadow} z-30`}
                         style={tooltipPos}
                       >
-                        <h4 className={`text-sm font-bold ${sub.color}`}>{sub.name}</h4>
+                        <div className="flex items-center gap-2">
+                          <h4 className={`text-sm font-bold ${sub.color}`}>{sub.name}</h4>
+                          {sub.isActive ? (
+                            <span className="text-[8px] font-mono text-green-400 bg-green-400/10 border border-green-400/30 rounded-full px-1.5 py-0.5">Live</span>
+                          ) : (
+                            <span className="text-[8px] font-mono text-accent bg-accent/10 border border-accent/30 rounded-full px-1.5 py-0.5">Launching Soon</span>
+                          )}
+                        </div>
                         <p className="text-foreground/50 text-[10px] font-mono mt-0.5">
                           {sub.domain}
                         </p>
@@ -313,22 +351,32 @@ export default function Subsidiaries() {
                   style={{ top: `calc(50% + ${y}px)`, left: `calc(50% + ${x}px)`, transform: "translate(-50%, -50%)" }}
                   onClick={() => setActive(active === i ? null : i)}
                 >
-                  <div
-                    className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full ${sub.bg} border ${sub.border} flex flex-col items-center justify-center transition-all ${
-                      active === i ? `scale-110 shadow-lg ${sub.shadow}` : ""
-                    }`}
-                  >
-                    <svg
-                      className={`w-5 h-5 ${sub.color}`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                  <div className="relative">
+                    <div
+                      className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full ${sub.bg} border ${sub.border} flex flex-col items-center justify-center transition-all ${
+                        active === i ? `scale-110 shadow-lg ${sub.shadow}` : ""
+                      }`}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={sub.icon} />
-                    </svg>
-                    <span className={`text-[7px] sm:text-[8px] font-bold mt-0.5 ${sub.color}`}>
-                      {sub.name.replace("SJA ", "")}
-                    </span>
+                      <svg
+                        className={`w-5 h-5 ${sub.color}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={sub.icon} />
+                      </svg>
+                      <span className={`text-[7px] sm:text-[8px] font-bold mt-0.5 ${sub.color}`}>
+                        {sub.name.replace("SJA ", "")}
+                      </span>
+                    </div>
+                    {/* Status dot */}
+                    <span
+                      className={`absolute top-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-[#06060a] ${
+                        sub.isActive
+                          ? "bg-green-500 animate-blink-green"
+                          : "bg-accent"
+                      }`}
+                    />
                   </div>
                 </div>
               );
@@ -343,9 +391,16 @@ export default function Subsidiaries() {
           >
             {active !== null && (
               <div className="max-w-sm mx-auto px-4">
-                <h3 className={`text-lg font-bold ${subsidiaries[active].color}`}>
-                  {subsidiaries[active].name}
-                </h3>
+                <div className="flex items-center justify-center gap-2">
+                  <h3 className={`text-lg font-bold ${subsidiaries[active].color}`}>
+                    {subsidiaries[active].name}
+                  </h3>
+                  {subsidiaries[active].isActive ? (
+                    <span className="text-[9px] font-mono text-green-400 bg-green-400/10 border border-green-400/30 rounded-full px-2 py-0.5">Live</span>
+                  ) : (
+                    <span className="text-[9px] font-mono text-accent bg-accent/10 border border-accent/30 rounded-full px-2 py-0.5">Launching Soon</span>
+                  )}
+                </div>
                 <p className="text-foreground/50 text-[10px] font-mono mt-0.5">
                   {subsidiaries[active].domain}
                 </p>
