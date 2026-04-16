@@ -34,7 +34,7 @@ export default function About() {
               companies.
             </p>
             <a
-              href="https://sja-portfolio.vercel.app/"
+              href="https://sja-portfolio.netlify.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-3 rounded-lg bg-gradient-to-r from-accent to-accent-2 text-white font-semibold hover:opacity-90 transition-opacity"
