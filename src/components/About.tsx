@@ -31,8 +31,8 @@ export default function About() {
               and excellence.
             </p>
             <p className="text-foreground/70 leading-relaxed mb-8">
-              <span className="text-accent font-mono">sjapathway.com</span>{" "}
-              anchors the network, with each company operating on its own
+              The main domain <span className="text-accent font-mono">sja.co</span>{" "}
+              connects the network, with each company operating on its own
               domain &mdash; a small, focused portfolio built on real products
               rather than promises.
             </p>

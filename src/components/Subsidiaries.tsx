@@ -78,7 +78,7 @@ const subsidiaries: {
   // ---------------------------------------------------------------------------
   // {
   //   name: "SJA Care",
-  //   domain: "care.sja.com",
+  //   domain: "care.sja.co",
   //   link: "https://sja-care.netlify.app/",
   //   description:
   //     "Revolutionizing healthcare with AI-assisted diagnostics, robotic surgery, and patient care systems that integrate with the Atiana-H platform.",
@@ -91,7 +91,7 @@ const subsidiaries: {
   // },
   // {
   //   name: "SJA Constructions",
-  //   domain: "build.sja.com",
+  //   domain: "build.sja.co",
   //   link: "https://sja-build.netlify.app/",
   //   description:
   //     "Smart construction and infrastructure development powered by automation, robotics-assisted building, and intelligent project management.",
@@ -104,7 +104,7 @@ const subsidiaries: {
   // },
   // {
   //   name: "SJA Education",
-  //   domain: "edu.sja.com",
+  //   domain: "edu.sja.co",
   //   link: "https://sja-edu.netlify.app/",
   //   description:
   //     "Transforming learning through AI-powered tutoring, personalized education paths, and smart classroom technologies for students of all ages.",
@@ -117,7 +117,7 @@ const subsidiaries: {
   // },
   // {
   //   name: "SJA Wear",
-  //   domain: "wear.sja.com",
+  //   domain: "wear.sja.co",
   //   link: "https://sja-wear.netlify.app/",
   //   description:
   //     "Fashion meets technology. Smart wearables, tech-integrated clothing, and a fashion line that blends style with innovation.",
@@ -130,7 +130,7 @@ const subsidiaries: {
   // },
   // {
   //   name: "SJA Move",
-  //   domain: "move.sja.com",
+  //   domain: "move.sja.co",
   //   link: "https://sja-move.netlify.app/",
   //   description:
   //     "Next-generation transportation solutions including autonomous vehicles, smart logistics, and AI-optimized mobility platforms.",
@@ -143,7 +143,7 @@ const subsidiaries: {
   // },
   // {
   //   name: "SJA Fitness",
-  //   domain: "fit.sja.com",
+  //   domain: "fit.sja.co",
   //   link: "https://sja-fit.netlify.app/",
   //   description:
   //     "AI-powered fitness tracking, personalized workout plans, smart gym equipment, and health optimization through data-driven insights.",
@@ -156,7 +156,7 @@ const subsidiaries: {
   // },
   // {
   //   name: "SJA Finance",
-  //   domain: "finance.sja.com",
+  //   domain: "finance.sja.co",
   //   link: "https://sja-finance.netlify.app/",
   //   description:
   //     "Intelligent financial services including AI-driven investment analysis, digital banking solutions, and smart financial planning tools.",
@@ -169,7 +169,7 @@ const subsidiaries: {
   // },
   // {
   //   name: "SJA Food",
-  //   domain: "food.sja.com",
+  //   domain: "food.sja.co",
   //   link: "https://sja-food.netlify.app/",
   //   description:
   //     "Smart agriculture, AI-driven food supply chains, and innovative food technology solutions transforming how we grow, distribute, and consume food.",
@@ -182,7 +182,7 @@ const subsidiaries: {
   // },
   // {
   //   name: "SJA Travel",
-  //   domain: "travel.sja.com",
+  //   domain: "travel.sja.co",
   //   link: "https://sja-travel.netlify.app/",
   //   description:
   //     "Complete travel and hospitality solutions including SJA Airlines, SJA Hotels, and SJA Transport — redefining how people experience the world.",
@@ -195,7 +195,7 @@ const subsidiaries: {
   // },
   // {
   //   name: "SJA Realty",
-  //   domain: "realty.sja.com",
+  //   domain: "realty.sja.co",
   //   link: "https://sja-realty.netlify.app/",
   //   description:
   //     "Smart homes, AI-powered property management, and real estate technology transforming how people buy, sell, and live in modern spaces.",
@@ -244,7 +244,7 @@ export default function Subsidiaries() {
               <div className="text-center">
                 <div className="text-2xl font-bold text-accent">SJA</div>
                 <div className="text-[10px] text-foreground/50 font-mono mt-1">
-                  Inc.
+                  sja.co
                 </div>
               </div>
             </div>
@@ -373,7 +373,7 @@ export default function Subsidiaries() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-surface border-2 border-accent/50 flex items-center justify-center z-10 shadow-lg shadow-accent/10">
               <div className="text-center">
                 <div className="text-lg sm:text-xl font-bold text-accent">SJA</div>
-                <div className="text-[8px] text-foreground/50 font-mono mt-0.5">Inc.</div>
+                <div className="text-[8px] text-foreground/50 font-mono mt-0.5">sja.co</div>
               </div>
             </div>
 

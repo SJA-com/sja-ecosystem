@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     "SJA Verse",
     "SJA Robotics",
     "sjapathway.com",
+    "sja.co",
   ],
 };
 

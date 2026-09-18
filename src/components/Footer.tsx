@@ -31,7 +31,7 @@ export default function Footer() {
           <p className="text-accent/60 text-xs font-mono">
             Founded by Syeda Juveria Afreen
           </p>
-          <p className="text-xs text-foreground/40 font-mono">SJA Inc.</p>
+          <p className="text-xs text-foreground/40 font-mono">sja.co</p>
         </div>
       </div>
     </footer>

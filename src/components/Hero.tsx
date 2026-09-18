@@ -97,7 +97,7 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent text-sm mb-8">
           <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-          SJA Inc.
+          sja.co
         </div>
 
         <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight mb-6">
