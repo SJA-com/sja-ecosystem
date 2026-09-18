@@ -17,21 +17,24 @@ export default function About() {
               <strong className="text-foreground">
                 Syeda Juveria Afreen
               </strong>{" "}
-              &mdash; a multi-industry conglomerate with a mission to innovate
-              across every sector that touches everyday life.
+              &mdash; three companies shipping real products to people in 15+
+              countries.
             </p>
             <p className="text-foreground/70 leading-relaxed mb-6">
-              From AI-powered robotics to healthcare, from education to fashion,
-              from transportation to financial services &mdash; SJA&apos;s
-              subsidiaries work together as an ecosystem, each driving
-              innovation in its own domain while sharing a common purpose:
-              empowering people through technology and excellence.
+              <strong className="text-foreground">SJA Pathway</strong> is a
+              live AI career platform. <strong className="text-foreground">SJA
+              Verse</strong> is a browser game studio currently in build.{" "}
+              <strong className="text-foreground">SJA Robotics</strong> is
+              coming soon, with the founder pursuing an MEng in Robotics at
+              Stevens. Each company drives innovation in its own domain while
+              sharing a common purpose: empowering people through technology
+              and excellence.
             </p>
             <p className="text-foreground/70 leading-relaxed mb-8">
-              The main domain <span className="text-accent font-mono">sja.com</span>{" "}
-              connects the entire network, with each subsidiary operating under
-              its own subdomain, creating a unified yet diverse portfolio of
-              companies.
+              <span className="text-accent font-mono">sjapathway.com</span>{" "}
+              anchors the network, with each company operating on its own
+              domain &mdash; a small, focused portfolio built on real products
+              rather than promises.
             </p>
             <a
               href="https://sja-portfolio.netlify.app/"
@@ -45,8 +48,10 @@ export default function About() {
 
           <div className="grid grid-cols-2 gap-4">
             {[
-              { number: "12", label: "Companies", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" },
-              { number: "12", label: "Industries", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" },
+              { number: "3", label: "Companies", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" },
+              { number: "2", label: "Platforms Live", icon: "M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z" },
+              { number: "40+", label: "Subscribers", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" },
+              { number: "15+", label: "Countries", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" },
               { number: "1", label: "Founder", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" },
               { number: "\u221E", label: "Ambition", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
             ].map((stat) => (

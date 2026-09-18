@@ -13,7 +13,7 @@ export default function Footer() {
             />
             <div>
               <p className="text-sm font-bold">SJA</p>
-              <p className="text-xs text-foreground/40">One vision. Many industries. Infinite impact.</p>
+              <p className="text-xs text-foreground/40">3 companies. Real products. Global reach.</p>
             </div>
           </div>
 
@@ -31,7 +31,7 @@ export default function Footer() {
           <p className="text-accent/60 text-xs font-mono">
             Founded by Syeda Juveria Afreen
           </p>
-          <p className="text-xs text-foreground/40 font-mono">sja.com</p>
+          <p className="text-xs text-foreground/40 font-mono">SJA Inc.</p>
         </div>
       </div>
     </footer>

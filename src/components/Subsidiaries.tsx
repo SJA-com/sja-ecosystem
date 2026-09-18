@@ -2,165 +2,211 @@
 
 import { useState } from "react";
 
-const subsidiaries = [
+type Status = "live" | "building" | "soon";
+
+const statusMeta: Record<Status, { label: string; dot: string; badge: string }> = {
+  live: {
+    label: "Live",
+    dot: "bg-green-500 animate-blink-green",
+    badge: "text-green-400 bg-green-400/10 border-green-400/30",
+  },
+  building: {
+    label: "Building",
+    dot: "bg-blue-400 animate-pulse",
+    badge: "text-blue-400 bg-blue-400/10 border-blue-400/30",
+  },
+  soon: {
+    label: "Coming Soon",
+    dot: "bg-accent",
+    badge: "text-accent bg-accent/10 border-accent/30",
+  },
+};
+
+const subsidiaries: {
+  name: string;
+  domain: string;
+  link: string;
+  description: string;
+  icon: string;
+  color: string;
+  border: string;
+  bg: string;
+  shadow: string;
+  status: Status;
+}[] = [
   {
-    name: "SJA Path",
-    domain: "path.sja.com",
+    name: "SJA Pathway",
+    domain: "sjapathway.com",
     link: "https://sjapathway.com/",
     description:
-      "Career guidance, mentorship, and personal development platform. Helping individuals discover their path and achieve their full potential through AI-powered coaching.",
+      "AI career platform. Career guidance, mentorship, and personal development — helping individuals discover their path and reach their full potential through AI-powered coaching.",
     icon: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7",
     color: "text-[#d4a017]",
     border: "border-[#d4a017]/30",
     bg: "bg-[#d4a017]/10",
     shadow: "shadow-[#d4a017]/20",
-    isActive: true,
+    status: "live",
+  },
+  {
+    name: "SJA Verse",
+    domain: "verse.sjapathway.com",
+    link: "https://verse.sjapathway.com/",
+    description:
+      "Browser game studio. Building lightweight, playable-anywhere games that run straight in your browser — no downloads, no installs.",
+    icon: "M7 8h10a5 5 0 015 5 5 5 0 01-8.5 3.5L12 15l-1.5 1.5A5 5 0 012 13a5 5 0 015-5zM7 11v4m-2-2h4m6 0h.01M17 11h.01",
+    color: "text-cyan-500",
+    border: "border-cyan-500/30",
+    bg: "bg-cyan-500/10",
+    shadow: "shadow-cyan-500/20",
+    status: "building",
   },
   {
     name: "SJA Robotics",
-    domain: "robotics.sja.com",
+    domain: "sja-robotics.netlify.app",
     link: "https://sja-robotics.netlify.app/",
     description:
-      "At the forefront of integrating AI and automation into everyday devices. Home to the Atiana Robot, Sueen Drone, and a suite of smart home innovations.",
+      "Coming soon. Founder pursuing MEng Robotics at Stevens — integrating AI and automation into everyday devices. Home to the Atiana Robot, Sueen Drone, and smart home innovations.",
     icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z",
     color: "text-blue-400",
     border: "border-blue-400/30",
     bg: "bg-blue-400/10",
     shadow: "shadow-blue-400/20",
-    isActive: false,
+    status: "soon",
   },
-  {
-    name: "SJA Care",
-    domain: "care.sja.com",
-    link: "https://sja-care.netlify.app/",
-    description:
-      "Revolutionizing healthcare with AI-assisted diagnostics, robotic surgery, and patient care systems that integrate with the Atiana-H platform.",
-    icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
-    color: "text-red-400",
-    border: "border-red-400/30",
-    bg: "bg-red-400/10",
-    shadow: "shadow-red-400/20",
-    isActive: false,
-  },
-  {
-    name: "SJA Constructions",
-    domain: "build.sja.com",
-    link: "https://sja-build.netlify.app/",
-    description:
-      "Smart construction and infrastructure development powered by automation, robotics-assisted building, and intelligent project management.",
-    icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
-    color: "text-amber-400",
-    border: "border-amber-400/30",
-    bg: "bg-amber-400/10",
-    shadow: "shadow-amber-400/20",
-    isActive: false,
-  },
-  {
-    name: "SJA Education",
-    domain: "edu.sja.com",
-    link: "https://sja-edu.netlify.app/",
-    description:
-      "Transforming learning through AI-powered tutoring, personalized education paths, and smart classroom technologies for students of all ages.",
-    icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
-    color: "text-cyan-400",
-    border: "border-cyan-400/30",
-    bg: "bg-cyan-400/10",
-    shadow: "shadow-cyan-400/20",
-    isActive: false,
-  },
-  {
-    name: "SJA Wear",
-    domain: "wear.sja.com",
-    link: "https://sja-wear.netlify.app/",
-    description:
-      "Fashion meets technology. Smart wearables, tech-integrated clothing, and a fashion line that blends style with innovation.",
-    icon: "M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z",
-    color: "text-pink-400",
-    border: "border-pink-400/30",
-    bg: "bg-pink-400/10",
-    shadow: "shadow-pink-400/20",
-    isActive: false,
-  },
-  {
-    name: "SJA Move",
-    domain: "move.sja.com",
-    link: "https://sja-move.netlify.app/",
-    description:
-      "Next-generation transportation solutions including autonomous vehicles, smart logistics, and AI-optimized mobility platforms.",
-    icon: "M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0",
-    color: "text-green-400",
-    border: "border-green-400/30",
-    bg: "bg-green-400/10",
-    shadow: "shadow-green-400/20",
-    isActive: false,
-  },
-  {
-    name: "SJA Fitness",
-    domain: "fit.sja.com",
-    link: "https://sja-fit.netlify.app/",
-    description:
-      "AI-powered fitness tracking, personalized workout plans, smart gym equipment, and health optimization through data-driven insights.",
-    icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064",
-    color: "text-emerald-400",
-    border: "border-emerald-400/30",
-    bg: "bg-emerald-400/10",
-    shadow: "shadow-emerald-400/20",
-    isActive: false,
-  },
-  {
-    name: "SJA Finance",
-    domain: "finance.sja.com",
-    link: "https://sja-finance.netlify.app/",
-    description:
-      "Intelligent financial services including AI-driven investment analysis, digital banking solutions, and smart financial planning tools.",
-    icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-    color: "text-yellow-400",
-    border: "border-yellow-400/30",
-    bg: "bg-yellow-400/10",
-    shadow: "shadow-yellow-400/20",
-    isActive: false,
-  },
-  {
-    name: "SJA Food",
-    domain: "food.sja.com",
-    link: "https://sja-food.netlify.app/",
-    description:
-      "Smart agriculture, AI-driven food supply chains, and innovative food technology solutions transforming how we grow, distribute, and consume food.",
-    icon: "M12 3c-1.5 0-3 1-3 3 0 1.5 1 2.5 2 3v2H9c-1.5 0-3 1-3 3h12c0-2-1.5-3-3-3h-2V9c1-0.5 2-1.5 2-3 0-2-1.5-3-3-3zM6 16h12v2a2 2 0 01-2 2H8a2 2 0 01-2-2v-2z",
-    color: "text-lime-400",
-    border: "border-lime-400/30",
-    bg: "bg-lime-400/10",
-    shadow: "shadow-lime-400/20",
-    isActive: false,
-  },
-  {
-    name: "SJA Travel",
-    domain: "travel.sja.com",
-    link: "https://sja-travel.netlify.app/",
-    description:
-      "Complete travel and hospitality solutions including SJA Airlines, SJA Hotels, and SJA Transport — redefining how people experience the world.",
-    icon: "M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z",
-    color: "text-sky-400",
-    border: "border-sky-400/30",
-    bg: "bg-sky-400/10",
-    shadow: "shadow-sky-400/20",
-    isActive: false,
-  },
-  {
-    name: "SJA Realty",
-    domain: "realty.sja.com",
-    link: "https://sja-realty.netlify.app/",
-    description:
-      "Smart homes, AI-powered property management, and real estate technology transforming how people buy, sell, and live in modern spaces.",
-    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1m-4 0h4",
-    color: "text-violet-400",
-    border: "border-violet-400/30",
-    bg: "bg-violet-400/10",
-    shadow: "shadow-violet-400/20",
-    isActive: false,
-  },
+  // ---------------------------------------------------------------------------
+  // Future companies — commented out until they are real.
+  // ---------------------------------------------------------------------------
+  // {
+  //   name: "SJA Care",
+  //   domain: "care.sja.com",
+  //   link: "https://sja-care.netlify.app/",
+  //   description:
+  //     "Revolutionizing healthcare with AI-assisted diagnostics, robotic surgery, and patient care systems that integrate with the Atiana-H platform.",
+  //   icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+  //   color: "text-red-400",
+  //   border: "border-red-400/30",
+  //   bg: "bg-red-400/10",
+  //   shadow: "shadow-red-400/20",
+  //   isActive: false,
+  // },
+  // {
+  //   name: "SJA Constructions",
+  //   domain: "build.sja.com",
+  //   link: "https://sja-build.netlify.app/",
+  //   description:
+  //     "Smart construction and infrastructure development powered by automation, robotics-assisted building, and intelligent project management.",
+  //   icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+  //   color: "text-amber-400",
+  //   border: "border-amber-400/30",
+  //   bg: "bg-amber-400/10",
+  //   shadow: "shadow-amber-400/20",
+  //   isActive: false,
+  // },
+  // {
+  //   name: "SJA Education",
+  //   domain: "edu.sja.com",
+  //   link: "https://sja-edu.netlify.app/",
+  //   description:
+  //     "Transforming learning through AI-powered tutoring, personalized education paths, and smart classroom technologies for students of all ages.",
+  //   icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+  //   color: "text-cyan-400",
+  //   border: "border-cyan-400/30",
+  //   bg: "bg-cyan-400/10",
+  //   shadow: "shadow-cyan-400/20",
+  //   isActive: false,
+  // },
+  // {
+  //   name: "SJA Wear",
+  //   domain: "wear.sja.com",
+  //   link: "https://sja-wear.netlify.app/",
+  //   description:
+  //     "Fashion meets technology. Smart wearables, tech-integrated clothing, and a fashion line that blends style with innovation.",
+  //   icon: "M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z",
+  //   color: "text-pink-400",
+  //   border: "border-pink-400/30",
+  //   bg: "bg-pink-400/10",
+  //   shadow: "shadow-pink-400/20",
+  //   isActive: false,
+  // },
+  // {
+  //   name: "SJA Move",
+  //   domain: "move.sja.com",
+  //   link: "https://sja-move.netlify.app/",
+  //   description:
+  //     "Next-generation transportation solutions including autonomous vehicles, smart logistics, and AI-optimized mobility platforms.",
+  //   icon: "M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0",
+  //   color: "text-green-400",
+  //   border: "border-green-400/30",
+  //   bg: "bg-green-400/10",
+  //   shadow: "shadow-green-400/20",
+  //   isActive: false,
+  // },
+  // {
+  //   name: "SJA Fitness",
+  //   domain: "fit.sja.com",
+  //   link: "https://sja-fit.netlify.app/",
+  //   description:
+  //     "AI-powered fitness tracking, personalized workout plans, smart gym equipment, and health optimization through data-driven insights.",
+  //   icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064",
+  //   color: "text-emerald-400",
+  //   border: "border-emerald-400/30",
+  //   bg: "bg-emerald-400/10",
+  //   shadow: "shadow-emerald-400/20",
+  //   isActive: false,
+  // },
+  // {
+  //   name: "SJA Finance",
+  //   domain: "finance.sja.com",
+  //   link: "https://sja-finance.netlify.app/",
+  //   description:
+  //     "Intelligent financial services including AI-driven investment analysis, digital banking solutions, and smart financial planning tools.",
+  //   icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+  //   color: "text-yellow-400",
+  //   border: "border-yellow-400/30",
+  //   bg: "bg-yellow-400/10",
+  //   shadow: "shadow-yellow-400/20",
+  //   isActive: false,
+  // },
+  // {
+  //   name: "SJA Food",
+  //   domain: "food.sja.com",
+  //   link: "https://sja-food.netlify.app/",
+  //   description:
+  //     "Smart agriculture, AI-driven food supply chains, and innovative food technology solutions transforming how we grow, distribute, and consume food.",
+  //   icon: "M12 3c-1.5 0-3 1-3 3 0 1.5 1 2.5 2 3v2H9c-1.5 0-3 1-3 3h12c0-2-1.5-3-3-3h-2V9c1-0.5 2-1.5 2-3 0-2-1.5-3-3-3zM6 16h12v2a2 2 0 01-2 2H8a2 2 0 01-2-2v-2z",
+  //   color: "text-lime-400",
+  //   border: "border-lime-400/30",
+  //   bg: "bg-lime-400/10",
+  //   shadow: "shadow-lime-400/20",
+  //   isActive: false,
+  // },
+  // {
+  //   name: "SJA Travel",
+  //   domain: "travel.sja.com",
+  //   link: "https://sja-travel.netlify.app/",
+  //   description:
+  //     "Complete travel and hospitality solutions including SJA Airlines, SJA Hotels, and SJA Transport — redefining how people experience the world.",
+  //   icon: "M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z",
+  //   color: "text-sky-400",
+  //   border: "border-sky-400/30",
+  //   bg: "bg-sky-400/10",
+  //   shadow: "shadow-sky-400/20",
+  //   isActive: false,
+  // },
+  // {
+  //   name: "SJA Realty",
+  //   domain: "realty.sja.com",
+  //   link: "https://sja-realty.netlify.app/",
+  //   description:
+  //     "Smart homes, AI-powered property management, and real estate technology transforming how people buy, sell, and live in modern spaces.",
+  //   icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1m-4 0h4",
+  //   color: "text-violet-400",
+  //   border: "border-violet-400/30",
+  //   bg: "bg-violet-400/10",
+  //   shadow: "shadow-violet-400/20",
+  //   isActive: false,
+  // },
 ];
-
 export default function Subsidiaries() {
   const [active, setActive] = useState<number | null>(null);
 
@@ -176,13 +222,14 @@ export default function Subsidiaries() {
             <span className="text-accent">Ecosystem</span>
           </h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">
-            A unified yet diverse portfolio of companies that span multiple
-            industries.
+            3 companies. Real products. Global reach.
           </p>
           <p className="text-foreground/40 text-xs mt-3 font-mono">
-            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-500 animate-blink-green inline-block" /> SJA Pathway is live</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-500 animate-blink-green inline-block" /> Live</span>
             <span className="mx-2 text-foreground/20">|</span>
-            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-accent inline-block" /> Others launching soon</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse inline-block" /> Building</span>
+            <span className="mx-2 text-foreground/20">|</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-accent inline-block" /> Coming Soon</span>
           </p>
         </div>
 
@@ -197,7 +244,7 @@ export default function Subsidiaries() {
               <div className="text-center">
                 <div className="text-2xl font-bold text-accent">SJA</div>
                 <div className="text-[10px] text-foreground/50 font-mono mt-1">
-                  sja.com
+                  Inc.
                 </div>
               </div>
             </div>
@@ -275,14 +322,10 @@ export default function Subsidiaries() {
                     </div>
                     {/* Status dot */}
                     <span
-                      className={`absolute top-0.5 right-0.5 w-3 h-3 rounded-full border-2 border-[#06060a] ${
-                        sub.isActive
-                          ? "bg-green-500 animate-blink-green"
-                          : "bg-accent"
-                      }`}
+                      className={`absolute top-0.5 right-0.5 w-3 h-3 rounded-full border-2 border-[#06060a] ${statusMeta[sub.status].dot}`}
                     />
-                    {/* Coming Soon badge for non-active */}
-                    {!sub.isActive && (
+                    {/* Coming Soon badge for non-live */}
+                    {sub.status === "soon" && (
                       <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[7px] font-mono text-accent bg-[#06060a] border border-accent/30 rounded-full px-1.5 py-0.5 whitespace-nowrap">
                         Soon
                       </span>
@@ -296,11 +339,9 @@ export default function Subsidiaries() {
                       >
                         <div className="flex items-center gap-2">
                           <h4 className={`text-sm font-bold ${sub.color}`}>{sub.name}</h4>
-                          {sub.isActive ? (
-                            <span className="text-[8px] font-mono text-green-400 bg-green-400/10 border border-green-400/30 rounded-full px-1.5 py-0.5">Live</span>
-                          ) : (
-                            <span className="text-[8px] font-mono text-accent bg-accent/10 border border-accent/30 rounded-full px-1.5 py-0.5">Launching Soon</span>
-                          )}
+                          <span className={`text-[8px] font-mono border rounded-full px-1.5 py-0.5 ${statusMeta[sub.status].badge}`}>
+                            {statusMeta[sub.status].label}
+                          </span>
                         </div>
                         <p className="text-foreground/50 text-[10px] font-mono mt-0.5">
                           {sub.domain}
@@ -332,7 +373,7 @@ export default function Subsidiaries() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-surface border-2 border-accent/50 flex items-center justify-center z-10 shadow-lg shadow-accent/10">
               <div className="text-center">
                 <div className="text-lg sm:text-xl font-bold text-accent">SJA</div>
-                <div className="text-[8px] text-foreground/50 font-mono mt-0.5">sja.com</div>
+                <div className="text-[8px] text-foreground/50 font-mono mt-0.5">Inc.</div>
               </div>
             </div>
 
@@ -371,11 +412,7 @@ export default function Subsidiaries() {
                     </div>
                     {/* Status dot */}
                     <span
-                      className={`absolute top-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-[#06060a] ${
-                        sub.isActive
-                          ? "bg-green-500 animate-blink-green"
-                          : "bg-accent"
-                      }`}
+                      className={`absolute top-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-[#06060a] ${statusMeta[sub.status].dot}`}
                     />
                   </div>
                 </div>
@@ -395,11 +432,9 @@ export default function Subsidiaries() {
                   <h3 className={`text-lg font-bold ${subsidiaries[active].color}`}>
                     {subsidiaries[active].name}
                   </h3>
-                  {subsidiaries[active].isActive ? (
-                    <span className="text-[9px] font-mono text-green-400 bg-green-400/10 border border-green-400/30 rounded-full px-2 py-0.5">Live</span>
-                  ) : (
-                    <span className="text-[9px] font-mono text-accent bg-accent/10 border border-accent/30 rounded-full px-2 py-0.5">Launching Soon</span>
-                  )}
+                  <span className={`text-[9px] font-mono border rounded-full px-2 py-0.5 ${statusMeta[subsidiaries[active].status].badge}`}>
+                    {statusMeta[subsidiaries[active].status].label}
+                  </span>
                 </div>
                 <p className="text-foreground/50 text-[10px] font-mono mt-0.5">
                   {subsidiaries[active].domain}

@@ -11,9 +11,9 @@ export default function Vision() {
             <span className="text-accent">SJA</span>
           </h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">
-            SJA is more than a collection of companies &mdash; it&apos;s a
-            movement towards a smarter, more efficient future where innovation
-            knows no bounds.
+            SJA is more than three companies &mdash; it&apos;s a commitment to
+            build real products people actually use, and to grow only as fast
+            as the products earn it.
           </p>
         </div>
 
@@ -22,13 +22,13 @@ export default function Vision() {
             {
               title: "Cross-Industry Synergy",
               description:
-                "Each SJA subsidiary strengthens the others. Robotics powers healthcare. Tech enables education. AI drives fitness and finance. Together, they create something greater than the sum of their parts.",
+                "Each SJA company strengthens the others. Pathway's AI career platform, Verse's browser games, and Robotics' hardware share one foundation. Together, they create something greater than the sum of their parts.",
               icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
             },
             {
               title: "Global Expansion",
               description:
-                "From its roots in innovation, SJA plans to expand each subsidiary globally, bringing intelligent solutions to communities worldwide and setting new standards in every industry we enter.",
+                "SJA already reaches subscribers in 15+ countries. The plan is to keep expanding each company globally, bringing intelligent solutions to communities worldwide and setting new standards in every space we enter.",
               icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064",
             },
             {

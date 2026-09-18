@@ -13,17 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SJA | Empowering Innovation Across Industries",
+  title: "SJA Inc. | 3 Companies. Real Products. Global Reach.",
   description:
-    "SJA is a multi-industry conglomerate founded by Syeda Juveria Afreen, driving innovation across robotics, healthcare, education, technology, finance, and more.",
+    "SJA Inc. is founded by Syeda Juveria Afreen \u2014 home to SJA Pathway (AI career platform), SJA Verse (browser game studio), and SJA Robotics (coming soon).",
   keywords: [
     "SJA",
+    "SJA Inc",
     "Syeda Juveria Afreen",
+    "SJA Pathway",
+    "SJA Verse",
     "SJA Robotics",
-    "SJA Hospitals",
-    "SJA Education",
-    "SJA Tech",
-    "sja.com",
+    "sjapathway.com",
   ],
 };
 

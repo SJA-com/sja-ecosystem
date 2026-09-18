@@ -97,21 +97,21 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent text-sm mb-8">
           <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-          sja.com
+          SJA Inc.
         </div>
 
         <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight mb-6">
-          <span className="block">One Vision.</span>
+          <span className="block">3 Companies.</span>
           <span className="block bg-gradient-to-r from-accent via-accent-2 to-accent-3 bg-clip-text text-transparent animate-gradient">
-            Many Industries.
+            Real Products.
           </span>
-          <span className="block">Infinite Impact.</span>
+          <span className="block">Global Reach.</span>
         </h1>
 
         <p className="max-w-2xl mx-auto text-lg sm:text-xl text-foreground/60 mb-10">
-          SJA is a multi-industry conglomerate founded by Syeda Juveria Afreen,
-          driving innovation across robotics, healthcare, education, technology,
-          fashion, transportation, fitness, and finance.
+          SJA Inc. is founded by Syeda Juveria Afreen &mdash; home to SJA
+          Pathway, an AI career platform, SJA Verse, a browser game studio, and
+          SJA Robotics, coming soon.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
