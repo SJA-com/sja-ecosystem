@@ -235,9 +235,9 @@ export default function Subsidiaries() {
 
         {/* Orbital Layout - Desktop */}
         <div className="hidden lg:block">
-          <div className="relative w-[550px] h-[550px] mx-auto">
+          <div className="relative w-[600px] h-[600px] mx-auto">
             {/* Orbit ring */}
-            <div className="absolute inset-[45px] rounded-full border border-border/40" />
+            <div className="absolute inset-[80px] rounded-full border border-border/40" />
 
             {/* Center circle */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-surface border-2 border-accent/50 flex items-center justify-center z-10 shadow-lg shadow-accent/10">
@@ -253,7 +253,7 @@ export default function Subsidiaries() {
             {subsidiaries.map((sub, i) => {
               const angle = (i * 360) / subsidiaries.length - 90;
               const rad = (angle * Math.PI) / 180;
-              const radius = 230;
+              const radius = 220;
               const x = Math.round(Math.cos(rad) * radius * 100) / 100;
               const y = Math.round(Math.sin(rad) * radius * 100) / 100;
 
@@ -299,12 +299,12 @@ export default function Subsidiaries() {
                 >
                   <div className="relative">
                     <div
-                      className={`w-24 h-24 rounded-full ${sub.bg} border ${sub.border} flex flex-col items-center justify-center transition-all duration-300 ${
+                      className={`w-36 h-36 rounded-full ${sub.bg} border ${sub.border} flex flex-col items-center justify-center transition-all duration-300 ${
                         active === i ? `scale-110 shadow-lg ${sub.shadow}` : "hover:scale-105"
                       }`}
                     >
                       <svg
-                        className={`w-7 h-7 ${sub.color}`}
+                        className={`w-11 h-11 ${sub.color}`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -316,17 +316,17 @@ export default function Subsidiaries() {
                           d={sub.icon}
                         />
                       </svg>
-                      <span className={`text-[9px] font-bold mt-1.5 ${sub.color}`}>
+                      <span className={`text-sm font-bold mt-2 ${sub.color}`}>
                         {sub.name.replace("SJA ", "")}
                       </span>
                     </div>
                     {/* Status dot */}
                     <span
-                      className={`absolute top-0.5 right-0.5 w-3 h-3 rounded-full border-2 border-[#06060a] ${statusMeta[sub.status].dot}`}
+                      className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 border-[#06060a] ${statusMeta[sub.status].dot}`}
                     />
                     {/* Coming Soon badge for non-live */}
                     {sub.status === "soon" && (
-                      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[7px] font-mono text-accent bg-[#06060a] border border-accent/30 rounded-full px-1.5 py-0.5 whitespace-nowrap">
+                      <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-[9px] font-mono text-accent bg-[#06060a] border border-accent/30 rounded-full px-2 py-0.5 whitespace-nowrap">
                         Soon
                       </span>
                     )}
@@ -367,7 +367,7 @@ export default function Subsidiaries() {
         <div className="lg:hidden">
           <div className="relative w-[340px] h-[340px] mx-auto sm:w-[400px] sm:h-[400px]">
             {/* Orbit ring */}
-            <div className="absolute inset-[20px] sm:inset-[25px] rounded-full border border-border/40" />
+            <div className="absolute inset-[45px] sm:inset-[75px] rounded-full border border-border/40" />
 
             {/* Center circle */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-surface border-2 border-accent/50 flex items-center justify-center z-10 shadow-lg shadow-accent/10">
@@ -381,7 +381,7 @@ export default function Subsidiaries() {
             {subsidiaries.map((sub, i) => {
               const angle = (i * 360) / subsidiaries.length - 90;
               const rad = (angle * Math.PI) / 180;
-              const radius = 140;
+              const radius = 125;
               const x = Math.round(Math.cos(rad) * radius * 100) / 100;
               const y = Math.round(Math.sin(rad) * radius * 100) / 100;
 
@@ -394,25 +394,25 @@ export default function Subsidiaries() {
                 >
                   <div className="relative">
                     <div
-                      className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full ${sub.bg} border ${sub.border} flex flex-col items-center justify-center transition-all ${
+                      className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full ${sub.bg} border ${sub.border} flex flex-col items-center justify-center transition-all ${
                         active === i ? `scale-110 shadow-lg ${sub.shadow}` : ""
                       }`}
                     >
                       <svg
-                        className={`w-5 h-5 ${sub.color}`}
+                        className={`w-7 h-7 sm:w-8 sm:h-8 ${sub.color}`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={sub.icon} />
                       </svg>
-                      <span className={`text-[7px] sm:text-[8px] font-bold mt-0.5 ${sub.color}`}>
+                      <span className={`text-[9px] sm:text-[10px] font-bold mt-1 ${sub.color}`}>
                         {sub.name.replace("SJA ", "")}
                       </span>
                     </div>
                     {/* Status dot */}
                     <span
-                      className={`absolute top-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-[#06060a] ${statusMeta[sub.status].dot}`}
+                      className={`absolute top-1 right-1 w-3 h-3 rounded-full border-2 border-[#06060a] ${statusMeta[sub.status].dot}`}
                     />
                   </div>
                 </div>
