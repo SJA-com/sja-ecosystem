@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "deploy": "next build && wrangler deploy",
-    "deploy:dev": "next build && wrangler deploy --env dev"
+    "deploy:dev": "next build && wrangler deploy --env dev",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "16.2.2",
@@ -17,13 +20,19 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.7.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
+    "jsdom": "^25.0.1",
     "tailwindcss": "^4",
     "typescript": "^5",
+    "vitest": "^2.1.9",
     "wrangler": "^4.136.3"
   },
   "engines": {
