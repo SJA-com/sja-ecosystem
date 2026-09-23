@@ -1,3 +1,9 @@
+const linkedInPages = [
+  { label: "SJA Pathway", href: "https://www.linkedin.com/company/sjapathway" },
+  { label: "SJA Verse", href: "https://www.linkedin.com/company/sja-verse" },
+  { label: "SJA Robotics", href: "https://www.linkedin.com/company/sjarobotics" },
+];
+
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
@@ -22,6 +28,21 @@ export default function Footer() {
             <a href="#subsidiaries" className="text-sm text-foreground/50 hover:text-accent transition-colors">Companies</a>
             <a href="#vision" className="text-sm text-foreground/50 hover:text-accent transition-colors">Vision</a>
           </div>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center sm:justify-start gap-x-6 gap-y-2">
+          <span className="text-xs font-mono text-foreground/40">LinkedIn</span>
+          {linkedInPages.map((page) => (
+            <a
+              key={page.href}
+              href={page.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-foreground/50 hover:text-accent transition-colors"
+            >
+              {page.label}
+            </a>
+          ))}
         </div>
 
         <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">

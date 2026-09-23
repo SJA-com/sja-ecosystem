@@ -31,7 +31,9 @@ describe("<Footer />", () => {
       ["Companies", "#subsidiaries"],
       ["Vision", "#vision"],
     ];
-    const links = screen.getAllByRole("link");
+    const links = screen
+      .getAllByRole("link")
+      .filter((l) => l.getAttribute("href")!.startsWith("#"));
     expect(links.map((l) => [l.textContent, l.getAttribute("href")])).toEqual(expected);
   });
 
@@ -46,5 +48,19 @@ describe("<Footer />", () => {
     render(<Footer />);
     expect(screen.getByText("Founded by Syeda Juveria Afreen")).toBeInTheDocument();
     expect(screen.getByText("sja.co")).toBeInTheDocument();
+  });
+
+  it("links to all three company LinkedIn pages in new tabs", () => {
+    render(<Footer />);
+    for (const [name, href] of [
+      ["SJA Pathway", "https://www.linkedin.com/company/sjapathway"],
+      ["SJA Verse", "https://www.linkedin.com/company/sja-verse"],
+      ["SJA Robotics", "https://www.linkedin.com/company/sjarobotics"],
+    ]) {
+      const link = screen.getByRole("link", { name });
+      expect(link).toHaveAttribute("href", href);
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    }
   });
 });
