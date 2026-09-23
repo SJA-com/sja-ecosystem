@@ -25,7 +25,7 @@ export default function About() {
               live AI career platform. <strong className="text-foreground">SJA
               Verse</strong> is a browser game studio currently in build.{" "}
               <strong className="text-foreground">SJA Robotics</strong> is
-              coming soon, with the founder pursuing an MEng in Robotics at
+              live, with the founder pursuing an MEng in Robotics at
               Stevens. Each company drives innovation in its own domain while
               sharing a common purpose: empowering people through technology
               and excellence.

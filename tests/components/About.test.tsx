@@ -16,7 +16,7 @@ describe("<About />", () => {
     expect(screen.getByText("Syeda Juveria Afreen")).toBeInTheDocument();
     expect(text).toContain("SJA Pathway is a live AI career platform");
     expect(text).toContain("SJA Verse is a browser game studio currently in build");
-    expect(text).toContain("SJA Robotics is coming soon");
+    expect(text).toContain("SJA Robotics is live");
     expect(text).toContain("MEng in Robotics at Stevens");
     expect(text).toContain("15+ countries");
   });

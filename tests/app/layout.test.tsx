@@ -15,7 +15,7 @@ describe("root layout", () => {
 
   it("exports a description naming the founder and all three companies", () => {
     expect(metadata.description).toBe(
-      "SJA Inc. is founded by Syeda Juveria Afreen — home to SJA Pathway (AI career platform), SJA Verse (browser game studio), and SJA Robotics (coming soon)."
+      "SJA Inc. is founded by Syeda Juveria Afreen — home to SJA Pathway (AI career platform), SJA Verse (browser game studio), and SJA Robotics (AI and robotics)."
     );
   });
 

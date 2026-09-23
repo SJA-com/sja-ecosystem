@@ -25,7 +25,7 @@ describe("<Hero />", () => {
     const p = screen.getByText(/SJA Inc\. is founded by Syeda Juveria Afreen/);
     expect(p.textContent).toMatch(/SJA\s+Pathway, an AI career platform/);
     expect(p.textContent).toMatch(/SJA Verse, a browser game studio/);
-    expect(p.textContent).toMatch(/SJA Robotics, coming soon/);
+    expect(p.textContent).toMatch(/SJA Robotics, an AI and robotics company/);
   });
 
   it("has CTAs linking to the companies and about sections", () => {

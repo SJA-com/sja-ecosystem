@@ -26,8 +26,8 @@ const COMPANIES = [
     short: "Robotics",
     domain: "robotics.sjapathway.com",
     href: "https://robotics.sjapathway.com/",
-    status: "Coming Soon",
-    dot: "bg-accent",
+    status: "Live",
+    dot: "bg-green-500",
     desc: /Atiana Robot, Sueen Drone/,
   },
 ] as const;
@@ -93,13 +93,12 @@ describe("<Subsidiaries />", () => {
         });
     });
 
-    it("shows a 'Soon' badge only on Robotics", () => {
+    it("shows no 'Soon' badge now that Robotics is live", () => {
       const { container } = render(<Subsidiaries />);
       const { desktop } = layouts(container);
-      const links = within(desktop).getAllByRole("link");
-      expect(within(links[0]).queryByText("Soon")).toBeNull();
-      expect(within(links[1]).queryByText("Soon")).toBeNull();
-      expect(within(links[2]).getByText("Soon")).toBeInTheDocument();
+      for (const link of within(desktop).getAllByRole("link")) {
+        expect(within(link).queryByText("Soon")).toBeNull();
+      }
     });
 
     it("places the first company at the top of the orbit", () => {

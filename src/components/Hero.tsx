@@ -111,7 +111,7 @@ export default function Hero() {
         <p className="max-w-2xl mx-auto text-lg sm:text-xl text-foreground/60 mb-10">
           SJA Inc. is founded by Syeda Juveria Afreen &mdash; home to SJA
           Pathway, an AI career platform, SJA Verse, a browser game studio, and
-          SJA Robotics, coming soon.
+          SJA Robotics, an AI and robotics company.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
