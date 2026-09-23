@@ -10,7 +10,7 @@ import RootLayout, { metadata } from "@/app/layout";
 
 describe("root layout", () => {
   it("exports the site title", () => {
-    expect(metadata.title).toBe("SJA Inc. | 3 Companies. Real Products. Global Reach.");
+    expect(metadata.title).toBe("Inc. | 3 Companies. Real Products. Global Reach.");
   });
 
   it("exports a description naming the founder and all three companies", () => {
