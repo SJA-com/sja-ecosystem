@@ -1,0 +1,28 @@
+# SJA Inc. ecosystem site — static site on Cloudflare Workers (assets only).
+#
+#   sja-ecosystem      (prod) → https://inc.sjapathway.com
+#   sja-ecosystem-dev  (dev)  → https://sja-ecosystem-dev.<account>.workers.dev
+#
+# Deploy (Node 22+, `wrangler login`):
+#   npm run deploy         # production
+#   npm run deploy:dev     # dev worker
+
+name = "sja-ecosystem"
+compatibility_date = "2024-09-23"
+workers_dev = true
+
+routes = [
+  { pattern = "inc.sjapathway.com", custom_domain = true }
+]
+
+[assets]
+directory = "./out"
+not_found_handling = "404-page"
+
+[env.dev]
+name = "sja-ecosystem-dev"
+workers_dev = true
+
+[env.dev.assets]
+directory = "./out"
+not_found_handling = "404-page"
