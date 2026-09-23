@@ -67,7 +67,6 @@ export default function Navbar() {
               width={48}
               height={48}
               className="rounded-full"
-              quality={100}
               unoptimized
             />
           </Link>
@@ -94,6 +93,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             className={`md:hidden p-2 text-foreground/70 ${hoverText}`}
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               {mobileOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 6h16M4 12h16M4 18h16" />}

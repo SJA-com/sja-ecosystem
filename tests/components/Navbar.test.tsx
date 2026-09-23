@@ -164,4 +164,12 @@ describe("<Navbar />", () => {
       cleanupSections();
     });
   });
+
+  it("reports the mobile menu state via aria-expanded", () => {
+    render(<Navbar />);
+    const toggle = screen.getByLabelText("Toggle menu");
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    fireEvent.click(toggle);
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+  });
 });
