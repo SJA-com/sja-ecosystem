@@ -183,9 +183,12 @@ export default function Founder() {
                 CTO, collaborating with teams across the USA, France, Australia, and the UK.
               </p>
               <p data-reveal="right" style={stagger(2)}>
-                Currently, I serve as the Product &amp; Engineering Lead at{" "}
-                <span className="text-accent font-mono">map.ca</span>, contributing to impactful,
-                community-driven technology solutions.
+                Today I lead SJA Inc. full time as Founder &amp; CEO, building all three companies:{" "}
+                <span className="text-accent">SJA Pathway</span>, the AI career platform;{" "}
+                <span className="text-accent">SJA Verse</span>, a browser game studio; and{" "}
+                <span className="text-accent">SJA Robotics</span>, bringing AI and automation into
+                everyday devices. Before this, I was the Product &amp; Engineering Lead at map.ca
+                (Nov 2025 &ndash; Mar 2026).
               </p>
               <p data-reveal="right" style={stagger(3)}>
                 Beyond engineering, I&apos;m also a Game Developer, Content Writer, and Content Creator,
@@ -243,11 +246,19 @@ export default function Founder() {
                     <li className="pl-5 relative">
                       <span className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-green-500 animate-blink-green" />
                       <div className="flex flex-wrap items-center gap-2">
-                        <h4 className="font-semibold text-foreground text-sm">Product &amp; Engineering Lead, map.ca</h4>
+                        <h4 className="font-semibold text-foreground text-sm">Founder &amp; CEO, SJA Inc.</h4>
                         <span className="text-[10px] font-mono uppercase tracking-wider text-green-400 border border-green-400/30 bg-green-400/10 rounded-full px-2 py-0.5">
                           Current
                         </span>
                       </div>
+                      <p className="text-xs text-foreground/50 mt-1">
+                        Building SJA Pathway, SJA Verse and SJA Robotics
+                      </p>
+                    </li>
+                    <li className="pl-5 relative">
+                      <span className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent" />
+                      <h4 className="font-semibold text-foreground text-sm">Product &amp; Engineering Lead, map.ca</h4>
+                      <p className="text-xs text-foreground/50 mt-1">Nov 2025 &ndash; Mar 2026</p>
                     </li>
                     <li className="pl-5 relative">
                       <span className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent" />

@@ -34,12 +34,16 @@ describe("<Founder />", () => {
     const t = text(container);
     expect(t).toContain("With over 5 years of experience in the IT industry");
     expect(t).toContain("collaborating with teams across the USA, France, Australia, and the UK");
-    expect(t).toContain("Product & Engineering Lead at map.ca");
+    expect(t).toContain("Founder & CEO, building all three companies");
+    expect(t).toMatch(/Product & Engineering Lead at map\.ca\s*\(Nov 2025 – Mar 2026\)/);
     const roles = within(screen.getByRole("list", { name: "Roles held" }))
       .getAllByRole("listitem")
       .map((li) => li.textContent);
     expect(roles).toEqual(["Tech Support Engineer", "Senior Software Engineer", "Lead Software Engineer", "CTO"]);
+    expect(screen.getByText("Founder & CEO, SJA Inc.")).toBeInTheDocument();
+    expect(screen.getByText("Building SJA Pathway, SJA Verse and SJA Robotics")).toBeInTheDocument();
     expect(screen.getByText("Product & Engineering Lead, map.ca")).toBeInTheDocument();
+    expect(screen.getByText("Nov 2025 – Mar 2026")).toBeInTheDocument();
   });
 
   it("lists both education entries with their status", () => {
