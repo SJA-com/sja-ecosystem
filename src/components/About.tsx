@@ -1,17 +1,32 @@
+const stagger = (i: number) => ({ "--i": i }) as React.CSSProperties;
+
+/** Split "40+" into a count-up target (40) and a static suffix ("+"). */
+function StatNumber({ value }: { value: string }) {
+  const m = value.match(/^(\d+)(.*)$/);
+  if (!m) return <>{value}</>;
+  return (
+    <>
+      <span data-count={m[1]}>{m[1]}</span>
+      {m[2]}
+    </>
+  );
+}
+
 export default function About() {
   return (
     <section id="about" className="py-24 relative">
+      <div data-reveal="line" className="section-line absolute top-0 left-0 right-0" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="text-accent text-sm font-mono mb-3 tracking-wider uppercase">
+            <p data-reveal="" className="text-accent text-sm font-mono mb-3 tracking-wider uppercase">
               About SJA
             </p>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 data-reveal="" style={stagger(1)} className="text-4xl sm:text-5xl font-bold mb-6">
               Building a{" "}
               <span className="text-accent">Smarter</span> Future
             </h2>
-            <p className="text-foreground/70 leading-relaxed mb-6">
+            <p data-reveal="" style={stagger(2)} className="text-foreground/70 leading-relaxed mb-6">
               <strong className="text-foreground">SJA</strong> is the parent
               brand and vision of{" "}
               <strong className="text-foreground">
@@ -20,7 +35,7 @@ export default function About() {
               &mdash; three companies shipping real products to people in 15+
               countries.
             </p>
-            <p className="text-foreground/70 leading-relaxed mb-6">
+            <p data-reveal="" style={stagger(3)} className="text-foreground/70 leading-relaxed mb-6">
               <strong className="text-foreground">SJA Pathway</strong> is a
               live AI career platform. <strong className="text-foreground">SJA
               Verse</strong> is a browser game studio currently in build.{" "}
@@ -30,20 +45,22 @@ export default function About() {
               sharing a common purpose: empowering people through technology
               and excellence.
             </p>
-            <p className="text-foreground/70 leading-relaxed mb-8">
+            <p data-reveal="" style={stagger(4)} className="text-foreground/70 leading-relaxed mb-8">
               The main domain <span className="text-accent font-mono">sja.co</span>{" "}
               connects the network, with each company operating on its own
               domain &mdash; a small, focused portfolio built on real products
               rather than promises.
             </p>
+            <div data-reveal="" style={stagger(5)}>
             <a
               href="https://sja-portfolio.netlify.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 rounded-lg bg-gradient-to-r from-accent to-accent-2 text-white font-semibold hover:opacity-90 transition-opacity"
+              className="sheen lift inline-block px-8 py-3 rounded-lg bg-gradient-to-r from-accent to-accent-2 text-white font-semibold"
             >
               Know More
             </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -54,16 +71,19 @@ export default function About() {
               { number: "15+", label: "Countries", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" },
               { number: "1", label: "Founder", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" },
               { number: "\u221E", label: "Ambition", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
-            ].map((stat) => (
+            ].map((stat, i) => (
+              <div key={stat.label} data-reveal="scale" style={stagger(i)}>
               <div
-                key={stat.label}
-                className="gradient-border rounded-xl p-6 bg-surface hover:bg-surface-2 transition-colors"
+                className="gradient-border lift glow rounded-xl p-6 bg-surface hover:bg-surface-2 transition-[background-color,transform] duration-200 ease-out h-full"
               >
                 <svg className="w-8 h-8 text-accent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={stat.icon} />
                 </svg>
-                <div className="text-3xl font-bold text-accent mb-1">{stat.number}</div>
+                <div className="stat-number text-3xl font-bold text-accent mb-1">
+                  <StatNumber value={stat.number} />
+                </div>
                 <div className="text-sm text-foreground/50">{stat.label}</div>
+              </div>
               </div>
             ))}
           </div>

@@ -45,8 +45,11 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center grid-bg overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/3 w-[500px] h-[500px] bg-accent-2/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl animate-drift" />
+        <div
+          className="absolute bottom-1/4 right-1/3 w-[500px] h-[500px] bg-accent-2/5 rounded-full blur-3xl animate-drift"
+          style={{ "--duration": "22s", animationDirection: "reverse" } as React.CSSProperties}
+        />
       </div>
 
       {/* Floating industry icons */}
@@ -95,44 +98,46 @@ export default function Hero() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent text-sm mb-8">
+        <div className="hero-in inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent text-sm mb-8">
           <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
           sja.co
         </div>
 
         <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight mb-6">
-          <span className="block">3 Companies.</span>
-          <span className="block bg-gradient-to-r from-accent via-accent-2 to-accent-3 bg-clip-text text-transparent animate-gradient">
+          <span className="hero-in block" style={{ "--i": 1 } as React.CSSProperties}>3 Companies.</span>
+          <span className="hero-in block bg-gradient-to-r from-accent via-accent-2 to-accent-3 bg-clip-text text-transparent animate-gradient" style={{ "--i": 2 } as React.CSSProperties}>
             Real Products.
           </span>
-          <span className="block">Global Reach.</span>
+          <span className="hero-in block" style={{ "--i": 3 } as React.CSSProperties}>Global Reach.</span>
         </h1>
 
-        <p className="max-w-2xl mx-auto text-lg sm:text-xl text-foreground/60 mb-10">
+        <p className="hero-in max-w-2xl mx-auto text-lg sm:text-xl text-foreground/60 mb-10" style={{ "--i": 4 } as React.CSSProperties}>
           SJA Inc. is founded by Syeda Juveria Afreen &mdash; home to SJA
           Pathway, an AI career platform, SJA Verse, a browser game studio, and
           SJA Robotics, an AI and robotics company.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="hero-in flex flex-col sm:flex-row items-center justify-center gap-4" style={{ "--i": 5 } as React.CSSProperties}>
           <a
             href="#subsidiaries"
-            className="px-8 py-3 rounded-lg bg-gradient-to-r from-accent to-accent-2 text-white font-semibold hover:opacity-90 transition-opacity"
+            className="sheen lift px-8 py-3 rounded-lg bg-gradient-to-r from-accent to-accent-2 text-white font-semibold"
           >
             Explore Our Companies
           </a>
           <a
             href="#about"
-            className="px-8 py-3 rounded-lg border border-border text-foreground/80 hover:border-accent/50 hover:text-accent transition-all"
+            className="lift px-8 py-3 rounded-lg border border-border text-foreground/80 hover:border-accent/50 hover:text-accent transition-[color,border-color,transform] duration-200 ease-out"
           >
             About SJA
           </a>
         </div>
 
-        <div className="mt-20 animate-bounce">
+        <div className="hero-in mt-20" style={{ "--i": 6 } as React.CSSProperties}>
+          <div className="animate-bounce">
           <svg className="w-6 h-6 mx-auto text-foreground/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
+          </div>
         </div>
       </div>
     </section>

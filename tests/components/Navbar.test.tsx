@@ -6,13 +6,14 @@ import { IntersectionObserverMock } from "../setup";
 const NAV = [
   { label: "About", href: "#about" },
   { label: "Companies", href: "#subsidiaries" },
+  { label: "Founder", href: "#founder" },
   { label: "Vision", href: "#vision" },
 ];
 
 function renderWithSections() {
   // Sections must exist in the DOM before Navbar's effect runs so the
   // scroll-spy picks them up.
-  const ids = ["hero", "about", "subsidiaries", "vision"];
+  const ids = ["hero", "about", "subsidiaries", "founder", "vision"];
   const sections = ids.map((id) => {
     const s = document.createElement("section");
     s.id = id;
@@ -119,6 +120,7 @@ describe("<Navbar />", () => {
     it.each([
       ["about", "About", "border-blue-400/50", "text-blue-400"],
       ["subsidiaries", "Companies", "border-accent/50", "text-accent"],
+      ["founder", "Founder", "border-rose-400/50", "text-rose-400"],
       ["vision", "Vision", "border-emerald-400/50", "text-emerald-400"],
     ])("highlights %s when it intersects", (id, label, border, text) => {
       const { container, sections, cleanupSections } = renderWithSections();
@@ -129,8 +131,10 @@ describe("<Navbar />", () => {
       for (const l of desktopLinks(container)) {
         if (l.textContent === label) {
           expect(l).toHaveClass(text, "font-medium");
+          expect(l).toHaveAttribute("aria-current", "location");
         } else {
           expect(l).not.toHaveClass("font-medium");
+          expect(l).not.toHaveAttribute("aria-current");
         }
       }
       cleanupSections();
@@ -163,6 +167,15 @@ describe("<Navbar />", () => {
       expect(obs.disconnected).toBe(true);
       cleanupSections();
     });
+  });
+
+  it("links to the founder section from both desktop and mobile menus", () => {
+    render(<Navbar />);
+    expect(screen.getByRole("link", { name: "Founder" })).toHaveAttribute("href", "#founder");
+    fireEvent.click(screen.getByRole("button", { name: "Toggle menu" }));
+    const founderLinks = screen.getAllByRole("link", { name: "Founder" });
+    expect(founderLinks).toHaveLength(2);
+    founderLinks.forEach((a) => expect(a).toHaveAttribute("href", "#founder"));
   });
 
   it("reports the mobile menu state via aria-expanded", () => {

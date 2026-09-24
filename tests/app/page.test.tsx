@@ -13,7 +13,7 @@ describe("home page", () => {
   it("renders the sections inside <main> in order", () => {
     render(<Home />);
     const ids = Array.from(screen.getByRole("main").querySelectorAll("section[id]")).map((s) => s.id);
-    expect(ids).toEqual(["hero", "about", "subsidiaries", "vision"]);
+    expect(ids).toEqual(["hero", "about", "subsidiaries", "founder", "vision"]);
   });
 
   it("has exactly one h1", () => {

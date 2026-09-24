@@ -7,7 +7,7 @@ const linkedInPages = [
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div data-reveal="" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <img
@@ -26,6 +26,7 @@ export default function Footer() {
           <div className="flex items-center gap-6">
             <a href="#about" className="text-sm text-foreground/50 hover:text-accent transition-colors">About</a>
             <a href="#subsidiaries" className="text-sm text-foreground/50 hover:text-accent transition-colors">Companies</a>
+            <a href="#founder" className="text-sm text-foreground/50 hover:text-accent transition-colors">Founder</a>
             <a href="#vision" className="text-sm text-foreground/50 hover:text-accent transition-colors">Vision</a>
           </div>
         </div>

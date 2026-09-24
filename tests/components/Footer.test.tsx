@@ -29,6 +29,7 @@ describe("<Footer />", () => {
     const expected = [
       ["About", "#about"],
       ["Companies", "#subsidiaries"],
+      ["Founder", "#founder"],
       ["Vision", "#vision"],
     ];
     const links = screen

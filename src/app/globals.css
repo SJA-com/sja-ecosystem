@@ -32,6 +32,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
 }
 
 .grid-bg {
@@ -92,4 +93,208 @@ html {
 
 .animate-blink-green {
   animation: blink-green 1.5s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Motion system
+   Everything below animates transform and opacity only, uses short ease-out
+   curves, and is gated behind prefers-reduced-motion: no-preference.
+   ========================================================================== */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-ms: 560ms;
+  --stagger: 80ms;
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes reveal-left {
+  from { opacity: 0; transform: translate3d(-32px, 0, 0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes reveal-right {
+  from { opacity: 0; transform: translate3d(32px, 0, 0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes reveal-scale {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes reveal-line {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes drop-in {
+  from { opacity: 0; transform: translate3d(0, -8px, 0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(40px, -30px, 0) scale(1.08); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.96); }
+  50% { opacity: 0.7; transform: scale(1.04); }
+}
+@keyframes sheen {
+  from { transform: translateX(-120%) skewX(-20deg); }
+  to { transform: translateX(220%) skewX(-20deg); }
+}
+
+/* Section divider: a hairline gold gradient between sections. */
+.section-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.5;
+  transform-origin: center;
+}
+
+/* Hover lift: transform only, fast ease-out. */
+.lift {
+  transition: transform 220ms var(--ease-out);
+}
+.lift:hover,
+.lift:focus-visible {
+  transform: translate3d(0, -4px, 0);
+}
+
+/* Soft glow that fades in on hover (opacity-only on a pseudo-element). */
+.glow {
+  position: relative;
+}
+.glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 12px 40px -12px rgba(212, 160, 32, 0.45);
+  opacity: 0;
+  transition: opacity 220ms var(--ease-out);
+  pointer-events: none;
+}
+.glow:hover::after,
+.glow:focus-visible::after {
+  opacity: 1;
+}
+
+/* Button sheen: a light band that sweeps across on hover. */
+.sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: translateX(-120%) skewX(-20deg);
+  pointer-events: none;
+  z-index: -1;
+}
+.sheen:hover::before {
+  animation: sheen 600ms var(--ease-out);
+}
+
+/* Animated underline for nav links (scaleX, not width). */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms var(--ease-out);
+}
+.nav-underline:hover::after,
+.nav-underline[aria-current]::after {
+  transform: scaleX(1);
+}
+
+.stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Scroll reveal. Hidden only when JS has enabled motion (html[data-motion]). */
+  html[data-motion] [data-reveal]:not([data-revealed]) {
+    opacity: 0;
+  }
+  html[data-motion] [data-reveal][data-revealed="animate"] {
+    animation: reveal-up var(--reveal-ms) var(--ease-out) backwards;
+    animation-delay: calc(var(--i, 0) * var(--stagger));
+  }
+  html[data-motion] [data-reveal="left"][data-revealed="animate"] { animation-name: reveal-left; }
+  html[data-motion] [data-reveal="right"][data-revealed="animate"] { animation-name: reveal-right; }
+  html[data-motion] [data-reveal="scale"][data-revealed="animate"] { animation-name: reveal-scale; }
+  html[data-motion] [data-reveal="line"][data-revealed="animate"] {
+    animation-name: reveal-line;
+    animation-duration: 600ms;
+  }
+
+  /* Hero entrance: pure CSS so it never waits on JS. */
+  .hero-in {
+    animation: reveal-up 600ms var(--ease-out) backwards;
+    animation-delay: calc(80ms + var(--i, 0) * 90ms);
+  }
+
+  /* Keep the gradient shimmer running alongside the entrance. */
+  .hero-in.animate-gradient {
+    animation:
+      reveal-up 600ms var(--ease-out) backwards,
+      gradient-shift 6s ease infinite;
+    animation-delay: calc(80ms + var(--i, 0) * 90ms), 0s;
+  }
+
+  .animate-drift {
+    animation: drift var(--duration, 18s) ease-in-out infinite;
+  }
+  .animate-spin-slow {
+    animation: spin-slow var(--duration, 60s) linear infinite;
+  }
+  .animate-glow-pulse {
+    animation: glow-pulse var(--duration, 5s) ease-in-out infinite;
+  }
+  .animate-fade-in {
+    animation: fade-in 180ms var(--ease-out) both;
+  }
+  .animate-drop-in {
+    animation: drop-in 200ms var(--ease-out) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .lift:hover,
+  .lift:focus-visible {
+    transform: none;
+  }
 }

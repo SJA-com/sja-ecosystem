@@ -7,6 +7,7 @@ import Link from "next/link";
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#subsidiaries", label: "Companies" },
+  { href: "#founder", label: "Founder" },
   { href: "#vision", label: "Vision" },
 ];
 
@@ -14,6 +15,7 @@ const sectionColors: Record<string, string> = {
   hero: "border-accent/50",
   about: "border-blue-400/50",
   subsidiaries: "border-accent/50",
+  founder: "border-rose-400/50",
   vision: "border-emerald-400/50",
 };
 
@@ -21,6 +23,7 @@ const sectionTextColors: Record<string, string> = {
   hero: "text-accent",
   about: "text-blue-400",
   subsidiaries: "text-accent",
+  founder: "text-rose-400",
   vision: "text-emerald-400",
 };
 
@@ -28,6 +31,7 @@ const sectionHoverColors: Record<string, string> = {
   hero: "hover:text-[#b28309]",
   about: "hover:text-blue-400",
   subsidiaries: "hover:text-[#b28309]",
+  founder: "hover:text-rose-400",
   vision: "hover:text-emerald-400",
 };
 
@@ -79,7 +83,8 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`text-sm transition-colors duration-300 ${
+                  aria-current={isActive ? "location" : undefined}
+                  className={`nav-underline text-sm transition-colors duration-300 ${
                     isActive ? `${accentText} font-medium` : `text-foreground/70 ${hoverText}`
                   }`}
                 >
@@ -103,7 +108,7 @@ export default function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-surface border-t border-border">
+        <div className="animate-drop-in md:hidden bg-surface border-t border-border">
           <div className="px-4 py-4 space-y-3">
             {navLinks.map((link) => {
               const sectionId = link.href.replace("#", "");
@@ -113,6 +118,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
+                  aria-current={isActive ? "location" : undefined}
                   className={`block text-sm transition-colors duration-300 ${
                     isActive ? `${accentText} font-medium` : `text-foreground/70 ${hoverText}`
                   }`}

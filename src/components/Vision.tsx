@@ -1,16 +1,19 @@
+const stagger = (i: number) => ({ "--i": i }) as React.CSSProperties;
+
 export default function Vision() {
   return (
     <section id="vision" className="py-24 relative">
+      <div data-reveal="line" className="section-line absolute top-0 left-0 right-0" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-accent text-sm font-mono mb-3 tracking-wider uppercase">
+          <p data-reveal="" className="text-accent text-sm font-mono mb-3 tracking-wider uppercase">
             Our Vision
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 data-reveal="" style={stagger(1)} className="text-4xl sm:text-5xl font-bold mb-4">
             The Future of{" "}
             <span className="text-accent">SJA</span>
           </h2>
-          <p className="text-foreground/60 max-w-2xl mx-auto">
+          <p data-reveal="" style={stagger(2)} className="text-foreground/60 max-w-2xl mx-auto">
             SJA is more than three companies &mdash; it&apos;s a commitment to
             build real products people actually use, and to grow only as fast
             as the products earn it.
@@ -37,13 +40,13 @@ export default function Vision() {
                 "Every product, every service, every company under SJA exists to empower people. Whether it's a robot that helps at home, a platform that guides your career, or tech that keeps you healthy.",
               icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z",
             },
-          ].map((item) => (
+          ].map((item, i) => (
+            <div key={item.title} data-reveal="" style={stagger(i)}>
             <div
-              key={item.title}
-              className="rounded-xl bg-surface border border-border p-8 hover:border-accent/30 transition-all"
+              className="group lift glow h-full rounded-xl bg-surface border border-border p-8 hover:border-accent/30 transition-[border-color,transform] duration-200 ease-out"
             >
               <svg
-                className="w-10 h-10 text-accent mb-4"
+                className="w-10 h-10 text-accent mb-4 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-rotate-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -60,11 +63,12 @@ export default function Vision() {
                 {item.description}
               </p>
             </div>
+            </div>
           ))}
         </div>
 
         {/* Founder quote */}
-        <div className="gradient-border rounded-2xl bg-surface p-8 sm:p-12 text-center">
+        <div data-reveal="scale" className="gradient-border rounded-2xl bg-surface p-8 sm:p-12 text-center">
           <blockquote className="text-xl sm:text-2xl text-foreground/70 italic leading-relaxed max-w-3xl mx-auto mb-6">
             &ldquo;SJA isn&apos;t just a brand &mdash; it&apos;s a promise to
             innovate relentlessly, to build solutions that matter, and to

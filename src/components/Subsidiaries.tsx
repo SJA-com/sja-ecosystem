@@ -214,17 +214,17 @@ export default function Subsidiaries() {
     <section id="subsidiaries" className="py-2 sm:py-12 relative grid-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-2 sm:mb-8">
-          <p className="text-accent text-sm font-mono mb-3 tracking-wider uppercase">
+          <p data-reveal="" className="text-accent text-sm font-mono mb-3 tracking-wider uppercase">
             Our Companies
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 data-reveal="" style={{ "--i": 1 } as React.CSSProperties} className="text-4xl sm:text-5xl font-bold mb-4">
             The SJA{" "}
             <span className="text-accent">Ecosystem</span>
           </h2>
-          <p className="text-foreground/60 max-w-2xl mx-auto">
+          <p data-reveal="" style={{ "--i": 2 } as React.CSSProperties} className="text-foreground/60 max-w-2xl mx-auto">
             3 companies. Real products. Global reach.
           </p>
-          <p className="text-foreground/40 text-xs mt-3 font-mono">
+          <p data-reveal="" style={{ "--i": 3 } as React.CSSProperties} className="text-foreground/40 text-xs mt-3 font-mono">
             <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-500 animate-blink-green inline-block" /> Live</span>
             <span className="mx-2 text-foreground/20">|</span>
             <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse inline-block" /> Building</span>
@@ -235,9 +235,13 @@ export default function Subsidiaries() {
 
         {/* Orbital Layout - Desktop */}
         <div className="hidden lg:block">
-          <div className="relative w-[600px] h-[600px] mx-auto">
+          <div data-reveal="scale" className="relative w-[600px] h-[600px] mx-auto">
             {/* Orbit ring */}
             <div className="absolute inset-[80px] rounded-full border border-border/40" />
+            {/* Slowly rotating dashed ring (transform only) */}
+            <div className="absolute inset-[40px] rounded-full border border-dashed border-accent/15 animate-spin-slow pointer-events-none" />
+            {/* Soft pulsing glow behind the hub */}
+            <div className="absolute top-1/2 left-1/2 -ml-24 -mt-24 w-48 h-48 rounded-full bg-accent/10 blur-2xl animate-glow-pulse pointer-events-none" />
 
             {/* Center circle */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-surface border-2 border-accent/50 flex items-center justify-center z-10 shadow-lg shadow-accent/10">
@@ -299,7 +303,7 @@ export default function Subsidiaries() {
                 >
                   <div className="relative">
                     <div
-                      className={`w-36 h-36 rounded-full ${sub.bg} border ${sub.border} flex flex-col items-center justify-center transition-all duration-300 ${
+                      className={`w-36 h-36 rounded-full ${sub.bg} border ${sub.border} flex flex-col items-center justify-center transition-transform duration-300 ease-out ${
                         active === i ? `scale-110 shadow-lg ${sub.shadow}` : "hover:scale-105"
                       }`}
                     >
@@ -334,7 +338,7 @@ export default function Subsidiaries() {
                     {/* Tooltip - always positioned outward from orbit */}
                     {active === i && (
                       <div
-                        className={`absolute w-56 rounded-xl bg-surface border ${sub.border} p-4 shadow-xl ${sub.shadow} z-30`}
+                        className={`animate-fade-in absolute w-56 rounded-xl bg-surface border ${sub.border} p-4 shadow-xl ${sub.shadow} z-30`}
                         style={tooltipPos}
                       >
                         <div className="flex items-center gap-2">
@@ -365,9 +369,10 @@ export default function Subsidiaries() {
 
         {/* Mobile Layout - Smaller orbital */}
         <div className="lg:hidden">
-          <div className="relative w-[340px] h-[340px] mx-auto sm:w-[400px] sm:h-[400px]">
+          <div data-reveal="scale" className="relative w-[340px] h-[340px] mx-auto sm:w-[400px] sm:h-[400px]">
             {/* Orbit ring */}
             <div className="absolute inset-[45px] sm:inset-[75px] rounded-full border border-border/40" />
+            <div className="absolute inset-[20px] sm:inset-[40px] rounded-full border border-dashed border-accent/15 animate-spin-slow pointer-events-none" />
 
             {/* Center circle */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-surface border-2 border-accent/50 flex items-center justify-center z-10 shadow-lg shadow-accent/10">
@@ -394,7 +399,7 @@ export default function Subsidiaries() {
                 >
                   <div className="relative">
                     <div
-                      className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full ${sub.bg} border ${sub.border} flex flex-col items-center justify-center transition-all ${
+                      className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full ${sub.bg} border ${sub.border} flex flex-col items-center justify-center transition-transform duration-300 ease-out ${
                         active === i ? `scale-110 shadow-lg ${sub.shadow}` : ""
                       }`}
                     >
@@ -427,7 +432,7 @@ export default function Subsidiaries() {
             }`}
           >
             {active !== null && (
-              <div className="max-w-sm mx-auto px-4">
+              <div key={active} className="animate-drop-in max-w-sm mx-auto px-4">
                 <div className="flex items-center justify-center gap-2">
                   <h3 className={`text-lg font-bold ${subsidiaries[active].color}`}>
                     {subsidiaries[active].name}
